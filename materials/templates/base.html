@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gelişim Kapsül Projesi{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header style="background-color: #f8f9fa; padding: 10px; border-bottom: 1px solid #dee2e6;">
+        <nav>
+            <a href="/" style="text-decoration: none; color: #007bff; font-weight: bold;">GELİSİM KAPSÜL PROTOTİPİ</a>
+            <span style="float: right;">Hoş Geldiniz, {{ user.username|default:"Misafir" }}</span>
+        </nav>
+    </header>
+
+    <main style="padding: 20px;">
+        {% block content %}
+            {% endblock %}
+    </main>
+
+    <footer style="margin-top: 50px; padding: 10px; text-align: center; color: #6c757d; border-top: 1px solid #dee2e6;">
+        &copy; 2025 Zamansızlar Takımı. Tüm Hakları Saklıdır.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">📤 Yeni Materyal Yükle</h4>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Ders Seçimi</label>
+                            <select class="form-select">
+                                <option>Web Programlama</option>
+                                <option>Veri Tabanı Yönetimi</option>
+                                <option>Veri Yapıları</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Materyal Başlığı</label>
+                            <input type="text" class="form-control" placeholder="Örn: Hafta 3 Slaytları">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Materyal Tipi</label>
+                            <div class="btn-group w-100" role="group">
+                                <input type="radio" class="btn-check" name="type" id="typePDF" checked>
+                                <label class="btn btn-outline-danger" for="typePDF">PDF Doküman</label>
+
+                                <input type="radio" class="btn-check" name="type" id="typeVideo">
+                                <label class="btn btn-outline-primary" for="typeVideo">Video Linki</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Dosya Seç / Link Gir</label>
+                            <input class="form-control" type="file" id="fileInput">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Materyali Kaydet</button>
+                            <a href="{% url 'material_list' %}" class="btn btn-secondary">İptal</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
