@@ -1,53 +1,95 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h4 class="mb-0">📤 Yeni Materyal Yükle</h4>
-                </div>
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Ders Seçimi</label>
-                            <select class="form-select">
-                                <option>Web Programlama</option>
-                                <option>Veri Tabanı Yönetimi</option>
-                                <option>Veri Yapıları</option>
-                            </select>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label class="form-label">Materyal Başlığı</label>
-                            <input type="text" class="form-control" placeholder="Örn: Hafta 3 Slaytları">
-                        </div>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card card-custom shadow-lg">
+            <div class="card-header p-4 border-0" style="background-color: #406882; color: white;">
+                <h4 class="mb-0"><i class="bi bi-cloud-arrow-up"></i> Yeni Materyal Yükle</h4>
+                <small class="opacity-75">Lütfen materyal bilgilerini eksiksiz doldurunuz.</small>
+            </div>
+            
+            <div class="card-body p-5">
+                <form>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-muted">Ders Seçimi</label>
+                        <select class="form-select form-select-lg bg-light border-2s">
+                            <option selected disabled>Bir ders seçiniz...</option>
+                            <option>Web Programlama</option>
+                            <option>Veri Tabanı Yönetimi</option>
+                            <option>Nesne Yönelimli Programlama</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-3">
-                            <label class="form-label">Materyal Tipi</label>
-                            <div class="btn-group w-100" role="group">
-                                <input type="radio" class="btn-check" name="type" id="typePDF" checked>
-                                <label class="btn btn-outline-danger" for="typePDF">PDF Doküman</label>
-
-                                <input type="radio" class="btn-check" name="type" id="typeVideo">
-                                <label class="btn btn-outline-primary" for="typeVideo">Video Linki</label>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-muted">Materyal Başlığı</label>
+                        <input type="text" class="form-control form-control-lg bg-light border-1" placeholder="Örn: Hafta 5 - CSS Grid Sistemi">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-muted">Materyal Türü</label>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <input type="radio" class="btn-check" name="type" id="pdfOption" checked onclick="toggleInput('pdf')">
+                                <label class="btn btn-outline-danger w-100 py-3 border-2 fw-bold" for="pdfOption">
+                                    <i class="bi bi-file-earmark-pdf fs-4 d-block mb-1"></i>
+                                    PDF Doküman
+                                </label>
+                            </div>
+                            <div class="col-6">
+                                <input type="radio" class="btn-check" name="type" id="videoOption" onclick="toggleInput('video')">
+                                <label class="btn btn-outline-primary w-100 py-3 border-2 fw-bold" for="videoOption">
+                                    <i class="bi bi-camera-video fs-4 d-block mb-1"></i>
+                                    Video Linki
+                                </label>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="mb-4">
-                            <label class="form-label">Dosya Seç / Link Gir</label>
-                            <input class="form-control" type="file" id="fileInput">
+                    <div class="mb-5">
+                        
+                        <div id="pdfInputArea">
+                            <label class="form-label fw-bold text-muted">PDF Dosyası Seçin</label>
+                            <input class="form-control form-control-lg" type="file" id="formFile" accept=".pdf">
+                            <div class="form-text text-danger"><i class="bi bi-info-circle"></i> Sadece .pdf uzantılı dosyalar yüklenebilir.</div>
                         </div>
 
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-lg">Materyali Kaydet</button>
-                            <a href="{% url 'material_list' %}" class="btn btn-secondary">İptal</a>
+                        <div id="videoInputArea" style="display: none;">
+                            <label class="form-label fw-bold text-muted">Video Bağlantısı (URL)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-link-45deg"></i></span>
+                                <input type="url" class="form-control form-control-lg" placeholder="https://www.youtube.com/watch?v=...">
+                            </div>
+                            <div class="form-text text-primary"><i class="bi bi-info-circle"></i> YouTube veya Sibnet video linkini yapıştırınız.</div>
                         </div>
-                    </form>
-                </div>
+
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button type="submit" class="btn btn-kapsul btn-success flex-grow-1">
+                            <i class="bi bi-check-lg"></i> Kaydet ve Yayınla
+                        </button>
+                        <a href="{% url 'material_list' %}" class="btn btn-primary btn-lg">
+                            İptal
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function toggleInput(type) {
+        const pdfArea = document.getElementById('pdfInputArea');
+        const videoArea = document.getElementById('videoInputArea');
+
+        if (type === 'pdf') {
+            pdfArea.style.display = 'block';
+            videoArea.style.display = 'none';
+        } else {
+            pdfArea.style.display = 'none';
+            videoArea.style.display = 'block';
+        }
+    }
+</script>
+
 {% endblock %}
