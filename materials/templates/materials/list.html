@@ -5,16 +5,16 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-secondary">Ana Sayfa</a></li>
         <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-secondary">Dersler</a></li>
-        <li class="breadcrumb-item active fw-bold" style="color: #1A374D;" aria-current="page">Web Programlama</li>
+        <li class="breadcrumb-item active fw-bold" style="color: #1A374D;" aria-current="page">{{ course_name }}</li>
     </ol>
 </nav>
 
-<div class="card card-custom mb-5 border-0 shadow-sm" style="background: linear-gradient(to right, #1A374D, #406882); color: white;">
+<div class="card card-custom mb-5 border-0 shadow-sm" style="background: linear-gradient(to right, #3c607cff, #406882); color: white;">
     <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
         <div>
-            <h2 class="fw-bold mb-1"><i class="bi bi-collection-play"></i> Web Programlama</h2>
-            <p class="mb-0 opacity-75">Ders materyallerine, notlara ve videolara buradan erişebilirsiniz.</p>
+            <h2 class="fw-bold mb-1 "><i class="bi bi-collection-play"></i> {{ course_name }}</h2>
         </div>
+        <p class="mb-0 opacity-75">Ders materyallerine, notlara ve videolara buradan erişebilirsiniz.</p>
         <div>
             <a href="{% url 'upload_material' %}" class="btn btn-light text-dark fw-bold px-4 py-2 shadow-sm">
                 <i class="bi bi-cloud-upload-fill text-warning"></i> Yeni Materyal Ekle
@@ -55,14 +55,14 @@
 
             <div class="card-footer bg-white border-1 pb-4 px-4">
                 <div class="d-grid gap-2">
-                    <a href="#" class="btn btn-outline-dark btn-sm fw-bold">
-                        <i class="bi bi-eye"></i> Görüntüle / İndir
+                   <a href="{% url 'material_detail' material.id %}" class="btn btn-outline-success btn-sm fw-bold">
+                        <i class="bi bi-eye"></i> Görüntüle
                     </a>
                     
                     <form action="#" method="POST" class="d-grid">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-link text-danger text-decoration-none border-2 btn-sm">
-                            <i class="bi bi-trash3"></i> Sil
+                        <button type="submit" class="btn btn-outline-danger btn-sm w-100">
+                            <i class="bi bi-trash3"></i> Sil 
                         </button>
                     </form>
                 </div>
@@ -78,5 +78,4 @@
     <h4 class="mt-3 text-muted">Henüz materyal yüklenmemiş.</h4>
 </div>
 {% endif %}
-
 {% endblock %}
