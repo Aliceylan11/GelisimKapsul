@@ -13,7 +13,7 @@ Gelişim Kapsül Projesi, üniversite öğrencileri ve akademisyenler için geli
 ## 👥 Takım Üyeleri (Zamansızlar Takımı)
 * **Proje Lideri & Materials App:** Ali Ceylan
 * **Accounts App:** Hasan Hüseyin Keskin
-* **Dashboard & Base Templates:** Arda Irmak
+* **Dashboard App & Base Templates:** Arda Irmak
 * **Courses App:** Edanur Bozlar
 
 ## 📂 Kurulum
@@ -21,7 +21,7 @@ Projeyi kendi bilgisayarınızda çalıştırmak için:
 
 1.  Repoyu klonlayın:
     ```bash
-    git clone [https://github.com/KULLANICI_ADIN/GelisimKapsul.git](https://github.com/KULLANICI_ADIN/GelisimKapsul.git)
+    git clone [https://github.com/Aliceylan11/GelisimKapsul.git](https://github.com/Aliceylan11/GelisimKapsul.git)
     ```
 2.  Sanal ortamı kurun ve aktif edin:
     ```bash
