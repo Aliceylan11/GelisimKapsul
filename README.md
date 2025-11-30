@@ -21,7 +21,7 @@ Projeyi kendi bilgisayarınızda çalıştırmak için:
 
 1.  Repoyu klonlayın:
     ```bash
-    git clone [https://github.com/Aliceylan11/GelisimKapsul.git](https://github.com/Aliceylan11/GelisimKapsul.git)
+    git clone https://github.com/Aliceylan11/GelisimKapsul.git
     ```
 2.  Sanal ortamı kurun ve aktif edin:
     ```bash
