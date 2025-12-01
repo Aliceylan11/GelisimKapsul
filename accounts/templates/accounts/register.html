@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-5">
+                    <h2 class="text-center fw-bold mb-4" style="color: #2c3e50;">Aramıza Katıl</h2>
+                    <p class="text-center text-muted mb-4">Eğitim dünyasına ilk adımını at.</p>
+                    
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted">Ad</label>
+                                <input type="text" class="form-control" placeholder="Adınız">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted">Soyad</label>
+                                <input type="text" class="form-control" placeholder="Soyadınız">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">E-posta Adresi</label>
+                            <input type="email" class="form-control" placeholder="ornek@email.com">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Şifre</label>
+                            <input type="password" class="form-control" placeholder="******">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Şifre Tekrar</label>
+                            <input type="password" class="form-control" placeholder="******">
+                        </div>
+
+                        <button type="button" class="btn w-100 btn-lg text-white fw-bold mt-3" style="background-color: #fd7e14; border: none;">Kayıt Ol</button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <span class="text-muted">Zaten hesabın var mı?</span>
+                        <a href="{% url 'login' %}" class="text-decoration-none fw-bold" style="color: #2c3e50;">Giriş Yap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
