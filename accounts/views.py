@@ -9,4 +9,6 @@ def register_view(request):
 def profile_view(request):
     return render(request, 'accounts/profile.html')
 
+def profile_duzenle_view(request):
+    return render(request, 'accounts/profile_duzenle.html')
 # Create your views here.

@@ -9,34 +9,45 @@
                     <h2 class="text-center fw-bold mb-4" style="color: #2c3e50;">Aramıza Katıl</h2>
                     <p class="text-center text-muted mb-4">Eğitim dünyasına ilk adımını at.</p>
                     
-                    <form>
+                    <form method="POST">
+                        {% csrf_token %}
+                        
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted">Ad</label>
-                                <input type="text" class="form-control" placeholder="Adınız">
+                                <input type="text" name="first_name" class="form-control" placeholder="Adınız" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted">Soyad</label>
-                                <input type="text" class="form-control" placeholder="Soyadınız">
+                                <input type="text" name="last_name" class="form-control" placeholder="Soyadınız" required>
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted">E-posta Adresi</label>
-                            <input type="email" class="form-control" placeholder="ornek@email.com">
+                            <input type="email" name="email" class="form-control" placeholder="ogrenci@universite.edu.tr" required>
+                           
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted">Şifre</label>
-                            <input type="password" class="form-control" placeholder="******">
+                            <input type="password" name="password" class="form-control" placeholder="******" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted">Şifre Tekrar</label>
-                            <input type="password" class="form-control" placeholder="******">
+                            <input type="password" name="confirm_password" class="form-control" placeholder="******" required>
                         </div>
 
-                        <button type="button" class="btn w-100 btn-lg text-white fw-bold mt-3" style="background-color: #fd7e14; border: none;">Kayıt Ol</button>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="kvkkCheck" required>
+                            <label class="form-check-label text-muted" for="kvkkCheck" style="font-size: 0.9rem;">
+                                <a href="#" class="text-decoration-none" style="color: #fd7e14;">Kullanıcı Sözleşmesi</a>'ni ve 
+                                <a href="#" class="text-decoration-none" style="color: #fd7e14;">KVKK Aydınlatma Metni</a>'ni okudum, onaylıyorum.
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn w-100 btn-lg text-white fw-bold mt-3" style="background-color: #fd7e14; border: none;">Kayıt Ol</button>
                     </form>
 
                     <div class="text-center mt-4">
