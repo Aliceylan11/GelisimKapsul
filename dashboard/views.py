@@ -34,4 +34,4 @@ def home(request):
         
     ]
 
-    return render(request, 'home.html', {"dersler": context_dersler})
+    return render(request, 'dashboard/home.html', {"dersler": context_dersler})

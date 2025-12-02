@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'dashboard/base.html' %}
 
 {% block content %}
 <div class="container mt-5 mb-5">
@@ -32,7 +32,7 @@
 
                     <div class="text-center mt-4">
                         <span class="text-muted">Hesabın yok mu?</span>
-                        <a href="{% url 'register' %}" class="text-decoration-none fw-bold" style="color: #2c3e50;">Kayıt Ol</a>
+                        <a href="{% url 'accounts/register' %}" class="text-decoration-none fw-bold" style="color: #2c3e50;">Kayıt Ol</a>
                     </div>
                 </div>
             </div>

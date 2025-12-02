@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-lacivert mb-4 shadow sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold fs-4" href="{% url 'home' %}">
+    <a class="navbar-brand fw-bold fs-4" href="{% url 'dashboard/home' %}">
       <img src="{% static 'img/gelisim_kapsul_logo.png' %}" alt="Logo" width="50" height="50" class="me-3 rounded-circle bg-white p-1">
         Gelişim Kapsül
     </a>
@@ -32,23 +32,23 @@
                         {{ user.username }}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="#">Profilim</a></li>
+                        <li><a class="dropdown-item" href="{% url 'accounts/profile' %}">Profilim</a></li>
                         <li><a class="dropdown-item" href="#">Derslerim</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
-                            <form action="{% url 'logout' %}" method="post" class="d-inline">
+                            <!--<form action="{% url 'logout' %}" method="post" class="d-inline">
                                 {% csrf_token %}
                                 <button type="submit" class="dropdown-item text-danger w-100 text-start">Çıkış Yap</button>
-                            </form>
+                            </form>-->
                         </li>
                     </ul>
                 </li>
             {% else %}
                 <li class="nav-item d-grid d-lg-block">
-                    <a href="#" class="btn btn-outline-light">Giriş Yap</a>
+                    <a href="{% url 'accounts/login' %}" class="btn btn-outline-light">Giriş Yap</a>
                 </li>
                 <li class="nav-item d-grid d-lg-block">
-                    <a href="#" class="btn btn-turuncu">Kayıt Ol</a>
+                    <a href="{% url 'accounts/register' %}" class="btn btn-turuncu">Kayıt Ol</a>
                 </li>
             {% endif %}
         </ul>

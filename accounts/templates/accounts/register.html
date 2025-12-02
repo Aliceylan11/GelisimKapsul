@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-
+{% extends 'dashboard/base.html' %}
 {% block content %}
 <div class="container mt-5 mb-5">
     <div class="row justify-content-center">
@@ -52,7 +51,7 @@
 
                     <div class="text-center mt-4">
                         <span class="text-muted">Zaten hesabın var mı?</span>
-                        <a href="{% url 'login' %}" class="text-decoration-none fw-bold" style="color: #2c3e50;">Giriş Yap</a>
+                        <a href="{% url 'accounts/login' %}" class="text-decoration-none fw-bold" style="color: #2c3e50;">Giriş Yap</a>
                     </div>
                 </div>
             </div>

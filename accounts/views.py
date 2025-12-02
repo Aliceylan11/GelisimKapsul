@@ -11,4 +11,3 @@ def profile_view(request):
 
 def profile_duzenle_view(request):
     return render(request, 'accounts/profile_duzenle.html')
-# Create your views here.
