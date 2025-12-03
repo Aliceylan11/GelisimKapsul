@@ -50,6 +50,15 @@ Terminal veya Komut İstemi'ni açarak projeyi klonlayın:
 git clone [https://github.com/Aliceylan11/GelisimKapsul.git](https://github.com/Aliceylan11/GelisimKapsul.git)
 
 🔄 Çalışma Adımları
+Mevcut Branch'leri Listeleme:
+git branch
+
+Yeni Branch Oluşturma ve Geçiş Yapma:
+git checkout -b isim-gorev-adi
+# Örnek: git checkout -b arda-navbar-tasarimi
+
+Farklı Bir Branch'e Geçiş Yapma:
+git checkout branch-adi
 
 1. Yeni Bir Göreve Başlarken:
 git checkout -b isim-gorev-adi
@@ -68,3 +77,4 @@ git pull origin main
 Ardından kendi dalınıza dönüp çalışmaya devam edebilirsiniz:
 git checkout kendi-dalim
 git merge main
+
