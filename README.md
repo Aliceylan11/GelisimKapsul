@@ -48,3 +48,14 @@ Projeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları s
 Terminal veya Komut İstemi'ni açarak projeyi klonlayın:
 ```bash
 git clone [https://github.com/Aliceylan11/GelisimKapsul.git](https://github.com/Aliceylan11/GelisimKapsul.git)
+
+### 🔄 Çalışma Adımları
+
+1. Yeni Bir Göreve Başlarken:
+git checkout -b isim-gorev-adi
+# Örnek: git checkout -b hasan-login-formu
+
+2. Kodları Kaydetme ve Gönderme
+git add .
+git commit -m "Yapılan işi özetleyen net bir mesaj yazın"
+git push origin isim-gorev-adi
