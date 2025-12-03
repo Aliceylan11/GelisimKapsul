@@ -16,7 +16,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="hero-overlay"></div>
-                <img src="https://placehold.co/1200x500/1A374D/white?text= " class="d-block w-100 hero-img" alt="Eğitim Platformu">
+                <img src="{% static 'img/slider1.png' %}" class="d-block w-100 hero-img" alt="Eğitim Platformu">
                 <div class="carousel-caption text-start">
                     <span class="badge bg-turuncu mb-3 px-3 py-2 rounded-pill animate-fade-up">Eğitim Platformu</span>
                     <h1 class="display-4 fw-bold mb-3 animate-fade-up delay-1">Bilgiye Hızla Ulaş,<br>Hayallerini Gerçekleştir</h1>
@@ -30,7 +30,7 @@
 
             <div class="carousel-item">
                 <div class="hero-overlay"></div>
-                <img src="https://placehold.co/1200x500/406882/white?text= " class="d-block w-100 hero-img" alt="Kaynaklar">
+                <img src="{% static 'img/slider2.png' %}" class="d-block w-100 hero-img" alt="Kaynaklar">
                 <div class="carousel-caption text-start">
                     <span class="badge bg-info mb-3 px-3 py-2 rounded-pill animate-fade-up">Zengin Kütüphane</span>
                     <h1 class="display-4 fw-bold mb-3 animate-fade-up delay-1">Binlerce Kaynak<br>Tek Platformda</h1>
@@ -43,7 +43,7 @@
 
             <div class="carousel-item">
                 <div class="hero-overlay"></div>
-                <img src="https://placehold.co/1200x500/2D3436/white?text= " class="d-block w-100 hero-img" alt="Topluluk">
+                <img src="{% static 'img/slider3.png' %}" class="d-block w-100 hero-img" alt="Topluluk">
                 <div class="carousel-caption text-start">
                     <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill animate-fade-up">Topluluk</span>
                     <h1 class="display-4 fw-bold mb-3 animate-fade-up delay-1">Üniversite Öğrencileri<br>Bir Arada</h1>
@@ -168,7 +168,7 @@
         <h2 class="display-6 fw-bold mb-3">Öğrenmeye Başlamaya Hazır mısın?</h2>
         <p class="lead text-white-50 mb-4 col-lg-8 mx-auto">Platforma katıl ve tüm bölümlerde binlerce öğrenciyle birlikte öğrenmeye başla.</p>
         <div class="d-flex justify-content-center gap-3">
-            <a href="#" class="btn btn-turuncu btn-lg px-5 shadow">Ücretsiz Kayıt Ol</a>
+            <a href="{% url 'accounts/register' %}" class="btn btn-turuncu btn-lg px-5 shadow">Ücretsiz Kayıt Ol</a>
         </div>
     </div>
 </section>

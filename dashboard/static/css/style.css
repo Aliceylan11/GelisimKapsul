@@ -322,13 +322,16 @@ body {
     text-decoration: underline;
 }
 
+
+
 .hero-section {
     position: relative;
     overflow: hidden;
+    
 }
 
 .hero-section .carousel-item {
-    height: 80dvh;
+    height: 80dvh; 
     min-height: 600px;
     max-height: 950px;
     background-color: #051016;
@@ -337,15 +340,15 @@ body {
 .hero-img {
     height: 100%;
     width: 100%;
-    object-fit: cover;
-    object-position: center 20%;
+    object-fit: cover; 
+    object-position: center 20%; 
     opacity: 0.95;
     transition: transform 8s cubic-bezier(0.25, 0.45, 0.45, 0.95);
     transform: scale(1);
 }
 
 .carousel-item.active .hero-img {
-    transform: scale(1.1);
+    transform: scale(1.1); 
 }
 
 .hero-overlay {
@@ -375,28 +378,36 @@ body {
 
 @media (max-width: 991px) {
     .hero-section .carousel-item {
-        height: auto;
-        min-height: 550px;
-        aspect-ratio: 3/4;
+        height: 100vh; 
+        min-height: 600px;
+    }
+    
+    .hero-img {
+        object-position: center center !important; 
     }
     
     .hero-overlay {
-        background: linear-gradient(180deg, rgba(26, 55, 77, 0.2) 0%, rgba(26, 55, 77, 0.85) 60%, rgba(26, 55, 77, 1) 100%);
+        background: linear-gradient(180deg, rgba(26, 55, 77, 0.3) 0%, rgba(26, 55, 77, 0.85) 50%, rgba(26, 55, 77, 1) 100%);
     }
 
     .hero-section .carousel-caption {
-        justify-content: flex-end;
-        padding: 0 5% 5rem 5%;
+        justify-content: flex-end; 
+        padding: 0 20px 120px 20px; 
         text-align: center !important;
         width: 100%;
         max-width: 100%;
         left: 0;
+        bottom: 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem; 
     }
 
     .hero-section .btn {
         width: 100%;
         margin-bottom: 10px;
-        display: block;
+        display: block; 
     }
 }
 
