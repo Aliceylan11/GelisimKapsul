@@ -1,0 +1,81 @@
+<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+    
+    <!-- KART 1: WEB PROGRAMLAMA -->
+    <div class="col">
+        <div class="card card-custom h-100 border-0 shadow-sm">
+            <img src="https://placehold.co/600x350/1A374D/ffffff?text=Web+Dev" class="card-img-top" alt="Web">
+            
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="badge bg-primary bg-opacity-10 text-primary">Yazılım</span>
+                    <small class="text-warning fw-bold"><i class="bi bi-star-fill"></i> 4.8</small>
+                </div>
+                <h5 class="card-title fw-bold mb-2">Web Programlama</h5>
+                <p class="card-text text-muted small">HTML, CSS, Django ile sıfırdan modern web siteleri geliştirmeyi öğrenin.</p>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <i class="bi bi-person-circle text-secondary"></i>
+                    <small class="text-muted">Dr. Arda Irmak</small>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+                <a href="{% url 'material_list' %}?course=Web Programlama" class="btn btn-outline-primary w-100 fw-bold">
+                    Derse Git <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- KART 2: MATEMATİK -->
+    <div class="col">
+        <div class="card card-custom h-100 border-0 shadow-sm">
+            <img src="https://placehold.co/600x350/F2994A/ffffff?text=Matematik" class="card-img-top" alt="Math">
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="badge bg-danger bg-opacity-10 text-danger">Akademik</span>
+                    <small class="text-warning fw-bold"><i class="bi bi-star-fill"></i> 4.9</small>
+                </div>
+                <h5 class="card-title fw-bold mb-2">Matematik</h5>
+                <p class="card-text text-muted small">Türev, İntegral ve Lineer Cebir konularını derinlemesine keşfedin.</p>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <i class="bi bi-person-circle text-secondary"></i>
+                    <small class="text-muted">Dr. Edanur Bozlar</small>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+                <a href="{% url 'material_list' %}?course=Matematik" class="btn btn-outline-danger w-100 fw-bold">
+                    Derse Git <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- KART 3: C# -->
+    <div class="col">
+        <div class="card card-custom h-100 border-0 shadow-sm">
+            <img src="https://placehold.co/600x350/406882/ffffff?text=C%23+.NET" class="card-img-top" alt="C#">
+            <div class="card-body">
+                <div class="d-flex justify-content-between mb-2">
+                    <span class="badge bg-success bg-opacity-10 text-success">Yazılım</span>
+                    <small class="text-warning fw-bold"><i class="bi bi-star-fill"></i> 4.7</small>
+                </div>
+                <h5 class="card-title fw-bold mb-2">C# ve .NET Core</h5>
+                <p class="card-text text-muted small">Masaüstü ve backend geliştirme dünyasına hızlı bir giriş yapın.</p>
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <i class="bi bi-person-circle text-secondary"></i>
+                    <small class="text-muted">Dr. Ali Ceylan</small>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pb-3">
+                <a href="#" class="btn btn-outline-success w-100 fw-bold">
+                    Yakında
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    .card-custom { transition: transform 0.2s; }
+    .card-custom:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
+</style>

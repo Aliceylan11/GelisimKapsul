@@ -1,0 +1,24 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        
+        <!-- SOL TARAFA SIDEBAR'I YERLEŞTİR -->
+        <div class="col-lg-3 mb-4">
+            {% include 'courses/sidebar.html' %}
+        </div>
+
+        <!-- SAĞ TARAFA İÇERİĞİ YERLEŞTİR -->
+        <div class="col-lg-9">
+            
+            <!-- Üst Barı Çağır -->
+            {% include 'courses/topbar.html' %}
+
+            <!-- Kartları Çağır -->
+            {% include 'courses/course_cards.html' %}
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
