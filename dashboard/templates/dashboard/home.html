@@ -18,11 +18,11 @@
                 <div class="hero-overlay"></div>
                 <img src="{% static 'img/slider1.png' %}" class="d-block w-100 hero-img" alt="Eğitim Platformu">
                 <div class="carousel-caption text-start">
-                    <span class="badge bg-turuncu mb-3 px-3 py-2 rounded-pill animate-fade-up">Eğitim Platformu</span>
+                    <span class="badge bg-info mb-3 px-3 py-2 rounded-pill animate-fade-up">Eğitim Platformu</span>
                     <h1 class="display-4 fw-bold mb-3 animate-fade-up delay-1">Bilgiye Hızla Ulaş,<br>Hayallerini Gerçekleştir</h1>
                     <p class="lead mb-4 animate-fade-up delay-2 text-white-50">Tüm üniversite bölümleri için hazırlanan ücretsiz ders ve kaynaklarla gelişimini hızlandır.</p>
                     <div class="animate-fade-up delay-3">
-                        <a href="#" class="btn btn-turuncu btn-lg px-4 me-2">Hemen Başla</a>
+                        <a href="{% url 'accounts/register' %}" class="btn btn-turuncu btn-lg px-4 me-2">Hemen Başla</a>
                         <a href="#" class="btn btn-outline-light btn-lg px-4">Dersleri İncele</a>
                     </div>
                 </div>
@@ -32,7 +32,7 @@
                 <div class="hero-overlay"></div>
                 <img src="{% static 'img/slider2.png' %}" class="d-block w-100 hero-img" alt="Kaynaklar">
                 <div class="carousel-caption text-start">
-                    <span class="badge bg-info mb-3 px-3 py-2 rounded-pill animate-fade-up">Zengin Kütüphane</span>
+                    <span class="badge bg-warning mb-3 px-3 py-2 rounded-pill animate-fade-up">Zengin Kütüphane</span>
                     <h1 class="display-4 fw-bold mb-3 animate-fade-up delay-1">Binlerce Kaynak<br>Tek Platformda</h1>
                     <p class="lead mb-4 animate-fade-up delay-2 text-white-50">Video dersler, PDF notlar ve çıkmış sorulara anında, ücretsiz erişim sağlayın.</p>
                     <div class="animate-fade-up delay-3">
@@ -45,7 +45,7 @@
                 <div class="hero-overlay"></div>
                 <img src="{% static 'img/slider3.png' %}" class="d-block w-100 hero-img" alt="Topluluk">
                 <div class="carousel-caption text-start">
-                    <span class="badge bg-warning text-dark mb-3 px-3 py-2 rounded-pill animate-fade-up">Topluluk</span>
+                    <span class="badge bg-success mb-3 px-3 py-2 rounded-pill animate-fade-up">Topluluk</span>
                     <h1 class="display-4 fw-bold mb-3 animate-fade-up delay-1">Üniversite Öğrencileri<br>Bir Arada</h1>
                     <p class="lead mb-4 animate-fade-up delay-2 text-white-50">Farklı bölümlerden öğrenciler ve eğitmenlerle bilgi paylaşın ve birlikte öğrenin.</p>
                     <div class="animate-fade-up delay-3">
@@ -91,14 +91,14 @@
     
     <div class="row g-4">
         <div class="col-md-4">
-            <div class="feature-card p-4 h-100 bg-white rounded-4 border-0 shadow-hover transition-all">
-                <div class="icon-wrapper mb-4 bg-lacivert bg-opacity-10 text-lacivert rounded-3 d-inline-flex p-3">
-                    <i class="fas fa-book-open fa-2x"></i>
-                </div>
-                <h5 class="fw-bold mb-3">Geniş Müfredat</h5>
-                <p class="text-muted">Tüm bölümler için güncel ders ve kaynakları tek platformda bulun.</p>
-            </div>
+    <div class="feature-card p-4 h-100 bg-white rounded-4 border-0 shadow-hover transition-all">
+        <div class="icon-wrapper mb-4 bg-primary bg-opacity-10 text-primary rounded-3 d-inline-flex p-3">
+            <i class="fas fa-project-diagram fa-2x"></i>
         </div>
+        <h5 class="fw-bold mb-3">Uygulamalı Projeler</h5>
+        <p class="text-muted">Edindiğiniz teorik bilgileri gerçek hayat projeleriyle pratiğe dökün ve portfolyonuzu güçlendirin.</p>
+        </div>
+        </div>  
         <div class="col-md-4">
             <div class="feature-card p-4 h-100 bg-white rounded-4 border-0 shadow-hover transition-all">
                 <div class="icon-wrapper mb-4 bg-turuncu bg-opacity-10 text-turuncu rounded-3 d-inline-flex p-3">
@@ -119,6 +119,7 @@
         </div>
     </div>
 </section>
+
 
 
 <section class="courses-section mb-5">
@@ -159,6 +160,34 @@
             </div>
         </div>
         {% endfor %}
+    </div>
+</section>
+
+<section class="instructor-section mb-5 p-4 bg-white rounded-4 shadow-sm border">
+    <div class="row align-items-center g-5">
+        <div class="col-lg-5 order-2 order-lg-1">
+            <img src="{% static 'img/egitmen_ol.png' %}" alt="Eğitmen Ol" class="img-fluid rounded-4 shadow-lg rotate-n3 transition-all hover-rotate-0">
+        </div>
+        <div class="col-lg-7 order-1 order-lg-2 ps-lg-5">
+            <span class="badge bg-lacivert bg-opacity-10 text-lacivert px-3 py-2 rounded-pill mb-3 fw-bold">Eğitmen Ağı</span>
+            
+            <h2 class="display-6 fw-bold text-lacivert mb-4">Bildiklerini Paylaş, Geleceğe Işık Tut</h2>
+            
+            <p class="lead text-muted mb-4">Kendi alanında uzman mısın? Gelişim Kapsül'de gönüllü eğitmen ol, binlerce üniversiteli gence ulaş ve <strong>bilgi birikiminle gelecek nesillere ilham ver.</strong></p>
+            
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-heart text-turuncu fs-4 me-3"></i> <span class="fw-bold text-dark">Sosyal Fayda</span> </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-certificate text-turuncu fs-4 me-3"></i> <span class="fw-bold text-dark">Prestij & Referans</span> </div>
+                </div>
+            </div>
+            
+            <a href="{% url 'accounts/register' %}" class="btn btn-lacivert-dolu btn-lg px-5 fw-bold rounded-pill shadow-lg">Gönüllü Eğitmen Ol <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
     </div>
 </section>
 

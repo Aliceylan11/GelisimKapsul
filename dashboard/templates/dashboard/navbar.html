@@ -10,49 +10,54 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     
-    <div class="offcanvas offcanvas-start bg-lacivert text-white" tabindex="-1" id="anaMenuOffcanvas" aria-labelledby="anaMenuLabel">
-      <div class="offcanvas-header border-bottom border-secondary">
-        <h5 class="offcanvas-title d-flex align-items-center fw-bold fs-4" id="anaMenuLabel">
-            <img src="{% static 'img/gelisim_kapsul_logo.png' %}" alt="Logo" width="50" height="50" class="me-3 rounded-circle bg-white p-1">
-            Gelişim Kapsül
-        </h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
+      <div class="offcanvas offcanvas-start bg-lacivert text-white" tabindex="-1" id="anaMenuOffcanvas" aria-labelledby="anaMenuLabel">
+        <div class="offcanvas-header border-bottom border-secondary">
+          <h5 class="offcanvas-title d-flex align-items-center fw-bold fs-4" id="anaMenuLabel">
+              <img src="{% static 'img/gelisim_kapsul_logo.png' %}" alt="Logo" width="50" height="50" class="me-3 rounded-circle bg-white p-1">
+              Gelişim Kapsül
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Kapat"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center">
+          <form class="d-flex mx-lg-auto w-100 w-lg-50 my-3 my-lg-0" role="search">
+            <input class="form-control me-2 py-2" type="search" placeholder="Ders veya eğitmen ara..." aria-label="Search">
+          </form>
+          <ul class="navbar-nav justify-content-start flex-grow-1 pe-3 align-items-lg-center gap-2">
+              <li class="nav-item">
+                  <a class="nav-link text-white" href="#">Fiyatlandırma</a>
+              </li>
+              {% if user.is_authenticated %}
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ user.username }}
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end shadow">
+                          <li><a class="dropdown-item" href="{% url 'accounts/profile' %}">Profilim</a></li>
+                          <li><a class="dropdown-item" href="#">Derslerim</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li>
+                              <!--<form action="{% url 'logout' %}" method="post" class="d-inline">
+                                  {% csrf_token %}
+                                  <button type="submit" class="dropdown-item text-danger w-100 text-start">Çıkış Yap</button>
+                              </form>-->
+                          </li>
+                      </ul>
+                  </li>
+              {% else %}
+                  <li class="nav-item d-grid d-lg-block">
+                      <a href="{% url 'accounts/login' %}" class="btn btn-outline-light">Giriş Yap</a>
+                  </li>
+                  <li class="nav-item d-grid d-lg-block">
+                      <a href="{% url 'accounts/register' %}" class="btn btn-turuncu">Kayıt Ol</a>
+                  </li>
+              {% endif %}
+          </ul>
+          <div class="mt-auto pt-4 border-top border-secondary d-lg-none">
+    <small class="text-white-50 d-block text-center">Gelişim Kapsül</small>
+    <small class="text-white-50 d-block text-center">© 2025 Tüm Hakları Saklıdır.</small>
+</div>
+        </div>
+        
       </div>
-      <div class="offcanvas-body d-flex flex-column flex-lg-row align-items-lg-center">
-        <form class="d-flex mx-lg-auto w-100 w-lg-50 my-3 my-lg-0" role="search">
-          <input class="form-control me-2 py-2" type="search" placeholder="Ders veya eğitmen ara..." aria-label="Search">
-        </form>
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 align-items-lg-center gap-2">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="#">Fiyatlandırma</a>
-            </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ user.username }}
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end shadow">
-                        <li><a class="dropdown-item" href="{% url 'accounts/profile' %}">Profilim</a></li>
-                        <li><a class="dropdown-item" href="#">Derslerim</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li>
-                            <!--<form action="{% url 'logout' %}" method="post" class="d-inline">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item text-danger w-100 text-start">Çıkış Yap</button>
-                            </form>-->
-                        </li>
-                    </ul>
-                </li>
-            {% else %}
-                <li class="nav-item d-grid d-lg-block">
-                    <a href="{% url 'accounts/login' %}" class="btn btn-outline-light">Giriş Yap</a>
-                </li>
-                <li class="nav-item d-grid d-lg-block">
-                    <a href="{% url 'accounts/register' %}" class="btn btn-turuncu">Kayıt Ol</a>
-                </li>
-            {% endif %}
-        </ul>
-      </div>
-    </div>
   </div>
 </nav>
