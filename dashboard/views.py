@@ -35,3 +35,16 @@ def home(request):
     ]
 
     return render(request, 'dashboard/home.html', {"dersler": context_dersler})
+
+
+def privacy_policy(request):
+    return render(request, 'dashboard/privacy.html') 
+
+def terms_of_use(request):
+    return render(request, 'dashboard/terms.html') 
+
+def pricing(request):
+    return render(request, 'dashboard/pricing.html')
+
+def corporate(request):
+    return render(request, 'dashboard/corporate.html')
