@@ -23,29 +23,18 @@
                 <h5 class="footer-title">Hızlı Erişim</h5>
                 <ul class="footer-links">
                     <li><a href="{% url 'dashboard/home' %}">Ana Sayfa</a></li>
-                    <li><a href="#">Dersler</a></li>
-                    <li><a href="#">Fiyatlandırma</a></li>
-                    <li><a href="#">Sık Sorulan Sorular</a></li>
+                    <li><a href="{% url 'courses/list' %}">Dersler</a></li>
+                    <li><a href="{% url 'pricing' %}">Fiyatlandırma</a></li>
                 </ul>
             </div>
 
             <div class="col-lg-2 col-md-6">
                 <h5 class="footer-title">Kurumsal</h5>
                 <ul class="footer-links">
-                    <li><a href="#">Hakkımızda</a></li>
-                    <li><a href="#">Ekibimiz</a></li>
-                    <li><a href="#">İletişim</a></li>
-                    <li><a href="#">KVKK Aydınlatma</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-2 col-md-6">
-                <h5 class="footer-title">Kaynaklar</h5>
-                <ul class="footer-links">
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Rehberler</a></li>
-                    <li><a href="#">Dökümanlar</a></li>
-                    <li><a href="#">API</a></li>
+                    <li><a href="{% url 'corporate' %}#hakkimizda">Hakkımızda</a></li>
+                    <li><a href="{% url 'corporate' %}#ekibimiz">Ekibimiz</a></li>
+                    <li><a href="{% url 'corporate' %}#iletisim">İletişim</a></li>
+                    <li><a href="{% url 'corporate' %}#kvkk">KVKK Aydınlatma</a></li>
                 </ul>
             </div>
 
@@ -57,9 +46,9 @@
             </p>
 
             <div class="footer-bottom-links">
-                <a href="#">Gizlilik</a>
+                <a href="{% url 'privacy' %}">Gizlilik</a>
                 <span>•</span>
-                <a href="#">Kullanım Şartları</a>
+                <a href="{% url 'terms' %}">Kullanım Şartları</a>
             </div>
         </div>
 

@@ -1,0 +1,136 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="privacy-hero position-relative overflow-hidden text-center text-white">
+    <div class="privacy-bg-pattern"></div>
+    
+    <div class="container position-relative z-1 py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <span class="badge bg-white bg-opacity-10 border border-white border-opacity-25 rounded-pill px-3 py-2 mb-3 backdrop-blur">
+                    <i class="fas fa-balance-scale me-2 text-warning"></i> Yasal Dokümantasyon
+                </span>
+                <h1 class="display-4 fw-bold mb-3 ls-tight">Kullanım Koşulları</h1>
+                <p class="lead text-white-50 mx-auto" style="max-width: 600px;">
+                    Gelişim Kapsül platformunu kullanırken haklarınız ve sorumluluklarınız hakkında şeffaf bilgilendirme.
+                </p>
+                <div class="mt-4 pt-3 border-top border-white border-opacity-10 d-inline-flex text-white-50 small">
+                    <span><i class="fas fa-globe me-2"></i>Bölge: <strong>Türkiye</strong></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-5">
+        
+        <div class="col-lg-3 d-none d-lg-block">
+            <nav class="sticky-sidebar">
+                <h6 class="sidebar-heading text-uppercase text-muted fw-bold mb-3 ls-1 font-monospace" style="font-size: 0.75rem;">Maddeler</h6>
+                <div class="nav flex-column doc-nav">
+                    <a href="#kabul" class="nav-link">1. Koşulların Kabulü</a>
+                    <a href="#fikri-mulkiyet" class="nav-link">2. Fikri Mülkiyet</a>
+                    <a href="#davranis-kurallari" class="nav-link">3. Topluluk Kuralları</a>
+                    <a href="#sorumluluk-reddi" class="nav-link">4. Sorumluluk Reddi</a>
+                    <a href="#degisiklikler" class="nav-link">5. Güncellemeler</a>
+                </div>
+                
+                
+            </nav>
+        </div>
+
+        <div class="col-lg-8 legal-content-wrapper ps-lg-5">
+            
+            <section id="kabul" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-dark text-white rounded-circle me-3 fw-bold">1</div>
+                    <h2 class="fw-bold mb-0 text-dark h3">Koşulların Kabulü</h2>
+                </div>
+                <div class="p-4 bg-light rounded-4 border">
+                    <p class="text-secondary mb-0 lh-lg">
+                        Bu web sitesine erişerek, sitede gezinerek veya bir hesap oluşturarak; işbu Kullanım Koşullarını ve yürürlükteki tüm yasa ve yönetmelikleri <strong class="text-dark">kabul etmiş sayılırsınız</strong>. Eğer bu şartlardan herhangi birini kabul etmiyorsanız, lütfen platformu kullanmayınız.
+                    </p>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="fikri-mulkiyet" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-dark text-white rounded-circle me-3 fw-bold">2</div>
+                    <h2 class="fw-bold mb-0 text-dark h3">Fikri Mülkiyet Hakları</h2>
+                </div>
+                <p class="text-secondary mb-4">Platform üzerindeki tüm dijital varlıklar (kodlar, videolar, tasarımlar) uluslararası telif hakları ile korunmaktadır.</p>
+                
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="info-card p-4 border rounded-4 h-100 bg-white">
+                            <i class="fas fa-copyright text-primary fs-3 mb-3"></i>
+                            <h6 class="fw-bold text-dark">Telif Hakkı</h6>
+                            <p class="small text-muted mb-0">İçeriklerin izinsiz kopyalanması, çoğaltılması veya dağıtılması yasaktır.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card p-4 border rounded-4 h-100 bg-white">
+                            <i class="fas fa-store-slash text-danger fs-3 mb-3"></i>
+                            <h6 class="fw-bold text-dark">Ticari Kullanım</h6>
+                            <p class="small text-muted mb-0">Eğitim materyallerinin üçüncü şahıslara satılması kesinlikle yasaktır.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="davranis-kurallari" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-dark text-white rounded-circle me-3 fw-bold">3</div>
+                    <h2 class="fw-bold mb-0 text-dark h3">Topluluk Kuralları</h2>
+                </div>
+                
+                <div class="alert alert-custom-danger border-0 rounded-4 p-4" style="background-color: #fef2f2; border: 1px solid #fecaca;">
+                    <h6 class="alert-heading fw-bold mb-3 text-danger"><i class="fas fa-exclamation-circle me-2"></i>Hesap Kapatma Sebepleri</h6>
+                    <ul class="list-unstyled mb-0 text-secondary">
+                        <li class="mb-2 d-flex align-items-center"><i class="fas fa-times-circle me-3 text-danger"></i> Nefret söylemi, ırkçılık veya ayrımcılık yapmak.</li>
+                        <li class="mb-2 d-flex align-items-center"><i class="fas fa-times-circle me-3 text-danger"></i> Diğer kullanıcıları veya eğitmenlere siber zorbalık.</li>
+                        <li class="d-flex align-items-center"><i class="fas fa-times-circle me-3 text-danger"></i> Sisteme zarar verecek yazılım (virüs, bot) kullanmak.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="sorumluluk-reddi" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-dark text-white rounded-circle me-3 fw-bold">4</div>
+                    <h2 class="fw-bold mb-0 text-dark h3">Sorumluluk Reddi</h2>
+                </div>
+                <div class="bg-white border rounded-4 p-4 position-relative overflow-hidden info-card">
+                    <div class="position-absolute top-0 end-0 p-3 opacity-10">
+                    </div>
+                    <p class="text-secondary position-relative z-1 mb-0 lh-lg">
+                        Platformda sunulan eğitim içerikleri "olduğu gibi" sunulmaktadır. Gelişim Kapsül, içeriklerin %100 doğruluğu, kesintisizliği veya belirli bir amaca uygunluğu konusunda garanti vermez. Kodların uygulanması sonucunda oluşabilecek veri kayıplarından kullanıcı sorumludur.
+                    </p>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="degisiklikler" class="legal-section mb-5">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-dark text-white rounded-circle me-3 fw-bold">5</div>
+                    <h2 class="fw-bold mb-0 text-dark h3">Güncellemeler</h2>
+                </div>
+                <p class="text-secondary">Yönetim, bu koşulları önceden haber vermeksizin güncelleme hakkını saklı tutar. Değişiklikler sitede yayınlandığı andan itibaren geçerli sayılır.</p>
+                <div class="d-flex align-items-center p-3 bg-light rounded-3 border">
+                    <i class="fas fa-bell text-warning fs-4 me-3"></i>
+                    <p class="small text-muted mb-0">Önemli değişiklikler kayıtlı e-posta adresinize bildirilecektir.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

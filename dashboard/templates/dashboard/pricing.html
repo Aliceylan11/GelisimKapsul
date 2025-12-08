@@ -1,0 +1,120 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="pricing-header position-relative overflow-hidden">
+    <div class="pricing-bg-overlay"></div>
+    <div class="container position-relative z-1 py-5 text-center text-white">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="d-inline-flex align-items-center justify-content-center mb-4">
+                    <span class="badge-pill-blur">
+                        <i class="fas fa-gem me-2 text-warning"></i> Geleceğine Yatırım Yap
+                    </span>
+                </div>
+                <h1 class="display-4 fw-bold mb-3 ls-tight">Senin İçin En Doğru Plan</h1>
+                <p class="lead text-white-50 mx-auto" style="max-width: 600px;">
+                    Üniversite öğrencileri için tamamen ücretsiz. Profesyoneller için erişilebilir fiyatlar.
+                </p>
+                
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5 mt-n6 position-relative z-2">
+    <div class="row g-4 justify-content-center">
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="price-card h-100 student-card">
+                <div class="card-badge bg-success">ÖĞRENCİ FIRSATI</div>
+                <div class="p-4 p-lg-5 d-flex flex-column h-100">
+                    <div class="mb-4">
+                        <h6 class="text-success fw-bold ls-1 text-uppercase mb-2">Üniversiteli</h6>
+                        <div class="d-flex align-items-center">
+                            <h2 class="display-3 fw-bold mb-0">0₺</h2>
+                        </div>
+                        <p class="text-muted small mt-2">.edu veya .edu.tr uzantılı mail adresi ile kayıt olanlar için.</p>
+                    </div>
+                    
+                    <div class="student-verify-box mb-4">
+                        <i class="fas fa-check-circle text-success me-2"></i> Otomatik Doğrulama
+                    </div>
+
+                    <ul class="list-unstyled mb-5 flex-grow-1">
+                        <li class="feature-item"><i class="fas fa-check text-success"></i> Tüm Video Derslere Erişim</li>
+                        <li class="feature-item"><i class="fas fa-check text-success"></i> Bitirme Sertifikaları</li>
+                        <li class="feature-item"><i class="fas fa-check text-success"></i> Kaynak Kodları İndirme</li>
+                        <li class="feature-item"><i class="fas fa-check text-success"></i> Eğitmen Soru-Cevap</li>
+                    </ul>
+
+                    <a href="{% url 'accounts/register' %}" class="btn btn-success w-100 btn-lg rounded-pill fw-bold">Edu Mail ile Başla</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="price-card h-100 pro-card">
+                <div class="p-4 p-lg-5 d-flex flex-column h-100">
+                    <div class="mb-4">
+                        <h6 class="text-dark fw-bold ls-1 text-uppercase mb-2">Bireysel</h6>
+                        <div class="d-flex align-items-end">
+                            <h2 class="display-3 fw-bold mb-0">155₺</h2>
+                            <span class="text-muted ms-1 mb-2 h5">/ay</span>
+                        </div>
+                        <p class="text-muted small mt-2">Kendini geliştirmek isteyen profesyoneller için tam paket.</p>
+                    </div>
+
+                    <ul class="list-unstyled mb-5 flex-grow-1">
+                        <li class="feature-item"><i class="fas fa-check text-dark"></i> Sınırsız Ders Erişimi</li>
+                        <li class="feature-item"><i class="fas fa-check text-dark"></i> Onaylı Sertifikalar</li>
+                        <li class="feature-item"><i class="fas fa-check text-dark"></i> Portfolyo Projeleri</li>
+                        
+                    </ul>
+
+                  <a href="{% url 'accounts/register' %}"> <button class="btn btn-dark w-100 btn-lg rounded-pill fw-bold">Eğitime Başla</button></a>
+                </div>
+            </div>
+        </div>
+
+        
+
+<div class="container py-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h3 class="fw-bold text-dark">Sıkça Sorulan Sorular</h3>
+            </div>
+            
+            <div class="accordion custom-accordion" id="faqAccordion">
+                <div class="accordion-item mb-3 border-0 shadow-sm rounded-4 overflow-hidden">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold py-4 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            Sistem edu mailimi nasıl anlıyor?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body px-4 pb-4 text-secondary">
+                            Kayıt olurken girdiğiniz e-posta adresi <strong>.edu</strong> veya <strong>.edu.tr</strong> ile bitiyorsa sistem sizi otomatik olarak algılar ve hesabınızı "Öğrenci" statüsüne geçirerek ücret talep etmez.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item border-0 shadow-sm rounded-4 overflow-hidden">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold py-4 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            Normal mail ile kayıt oldum, sonradan edu maile geçebilir miyim?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body px-4 pb-4 text-secondary">
+                            Evet. Profil ayarlarınızdan mail adresinizi güncelleyip doğruladığınız anda hesabınız otomatik olarak ücretsiz plana geçiş yapar.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

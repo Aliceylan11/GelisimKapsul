@@ -1,0 +1,190 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="privacy-hero position-relative overflow-hidden text-center text-white">
+    <div class="privacy-bg-pattern"></div>
+    <div class="container position-relative z-1 py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <span class="badge bg-white bg-opacity-10 border border-white border-opacity-25 rounded-pill px-3 py-2 mb-3 backdrop-blur">
+                    <i class="fas fa-shield-alt me-2 text-warning"></i> Güvenlik Merkezi
+                </span>
+                <h1 class="display-4 fw-bold mb-3 ls-tight">Gizlilik Politikası</h1>
+                <p class="lead text-white-50 mx-auto" style="max-width: 600px;">
+                    Verilerinizin şeffaflığı ve güvenliği, Gelişim Kapsül platformunun temel taşıdır.
+                </p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row g-5">
+        
+        <div class="col-lg-3 d-none d-lg-block">
+            <nav class="sticky-sidebar">
+                <h6 class="sidebar-heading text-uppercase text-muted fw-bold mb-3 ls-1">İçindekiler</h6>
+                <div class="nav flex-column doc-nav">
+                    <a href="#veri-toplama" class="nav-link">1. Veri Toplama</a>
+                    <a href="#kullanim-amaci" class="nav-link">2. Kullanım Amacı</a>
+                    <a href="#guvenlik" class="nav-link">3. Güvenlik Standartları</a>
+                    <a href="#cerezler" class="nav-link">4. Çerez Yönetimi</a>
+                    <a href="#iletisim" class="nav-link">5. İletişim & Haklar</a>
+                </div>
+
+                <div class="mt-5 p-3 bg-light rounded-3 border text-center">
+                    <i class="fas fa-headset text-primary fs-4 mb-2"></i>
+                    <p class="small text-muted mb-2">Sorunuz mu var?</p>
+                    <a href="mailto:info@gelisimkapsul.com" class="btn btn-sm btn-outline-dark w-100">Bize Ulaşın</a>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col-lg-8 legal-content-wrapper">
+            
+            <section id="veri-toplama" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-primary bg-opacity-10 text-primary rounded-3 me-3">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h2 class="fw-bold mb-0 text-dark">1. Toplanan Veriler</h2>
+                </div>
+                <p class="text-secondary">Platform kalitesini artırmak ve yasal yükümlülükleri yerine getirmek amacıyla aşağıdaki veri setlerini işlemekteyiz:</p>
+                
+                <div class="row g-3 mt-2">
+                    <div class="col-md-6">
+                        <div class="info-card p-3 border rounded-3 h-100">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-id-card text-secondary mt-1 me-3"></i>
+                                <div>
+                                    <h6 class="fw-bold text-dark">Kimlik Verileri</h6>
+                                    <p class="small text-muted mb-0">Ad, soyad, kullanıcı adı ve öğrenci numarası.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-card p-3 border rounded-3 h-100">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-envelope text-secondary mt-1 me-3"></i>
+                                <div>
+                                    <h6 class="fw-bold text-dark">İletişim Verileri</h6>
+                                    <p class="small text-muted mb-0">E-posta adresi ve doğrulama bilgileri.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="info-card p-3 border rounded-3 bg-light">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-fingerprint text-secondary mt-1 me-3"></i>
+                                <div>
+                                    <h6 class="fw-bold text-dark">Dijital İzler</h6>
+                                    <p class="small text-muted mb-0">IP adresi, tarayıcı bilgisi, giriş/çıkış logları ve şifrelenmiş parolalar.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="kullanim-amaci" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-warning bg-opacity-10 text-warning rounded-3 me-3">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2 class="fw-bold mb-0 text-dark">2. Verilerin Kullanım Amacı</h2>
+                </div>
+                <p class="text-secondary">KVKK ve GDPR standartlarına uygun olarak verileriniz şu amaçlarla işlenir:</p>
+                <ul class="usage-list list-unstyled mt-3">
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-check-circle text-success mt-1 me-3"></i>
+                        <span><strong>Eğitim Süreçleri:</strong> Ders ilerlemelerinin takibi, sınav sonuçlarının analizi ve sertifika oluşturma.</span>
+                    </li>
+                    <li class="d-flex mb-3">
+                        <i class="fas fa-check-circle text-success mt-1 me-3"></i>
+                        <span><strong>Hesap Güvenliği:</strong> Yetkisiz erişimlerin tespiti ve hesabın korunması.</span>
+                    </li>
+                    <li class="d-flex">
+                        <i class="fas fa-check-circle text-success mt-1 me-3"></i>
+                        <span><strong>İletişim:</strong> Platform güncellemeleri ve teknik destek süreçleri.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="guvenlik" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-danger bg-opacity-10 text-danger rounded-3 me-3">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h2 class="fw-bold mb-0 text-dark">3. Güvenlik Standartları</h2>
+                </div>
+                <p class="text-secondary">Verileriniz, endüstri standardı güvenlik duvarları arkasında korunmaktadır.</p>
+                
+                <div class="alert alert-custom-warning d-flex align-items-center mt-3" role="alert">
+                    <i class="fas fa-shield-virus fs-3 me-3"></i>
+                    <div>
+                        <h6 class="alert-heading fw-bold mb-1">Şifreleme Teknolojisi</h6>
+                        <p class="mb-0 small">Tüm parolalar "Argon2" veya "PBKDF2" hashing algoritmaları ile şifrelenir. Yönetim ekibi dahil kimse gerçek şifrenizi göremez.</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="cerezler" class="legal-section">
+                <div class="d-flex align-items-center mb-4">
+                    <div class="icon-square bg-info bg-opacity-10 text-info rounded-3 me-3">
+                        <i class="fas fa-cookie-bite"></i>
+                    </div>
+                    <h2 class="fw-bold mb-0 text-dark">4. Çerez Politikası</h2>
+                </div>
+                <p class="text-secondary">Oturum güvenliği ve kullanıcı deneyimi için zorunlu çerezler kullanılmaktadır.</p>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover text-sm">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Çerez Türü</th>
+                                <th>Amaç</th>
+                                <th>Süre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Session ID</td>
+                                <td>Oturumunuzu açık tutar.</td>
+                                <td>Tarayıcı kapanana kadar</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">CSRF Token</td>
+                                <td>Form güvenliğini sağlar.</td>
+                                <td>1 Yıl</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <hr class="section-divider">
+
+            <section id="iletisim" class="legal-section">
+                <div class="bg-dark text-white p-5 rounded-4 text-center" style="background: linear-gradient(45deg, #1e293b, #0f172a);">
+                    <i class="fas fa-envelope-open-text fs-1 mb-3 text-warning"></i>
+                    <h3 class="fw-bold">Haklarınız İçin Buradayız</h3>
+                    <p class="text-white-50 mb-4">Verilerinizi silmek, güncellemek veya bilgi almak için 7/24 bizimle iletişime geçebilirsiniz.</p>
+                    <a href="mailto:info@gelisimkapsul.com" class="btn btn-warning text-dark fw-bold px-4 rounded-pill hover-scale">
+                        Destek Talebi Oluştur
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
