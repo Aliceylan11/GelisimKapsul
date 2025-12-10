@@ -1,25 +1,23 @@
 <footer class="gk-footer mt-auto">
+    <div class="footer-bg-shape"></div>
     <div class="container">
-
         <div class="footer-top row g-5">
-
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-5 col-md-12">
                 <h4 class="footer-logo">Gelişim Kapsül</h4>
                 <p class="footer-desc">
                     Üniversite öğrencileri ve akademisyenler arasında dijital köprü.
                     Ücretsiz eğitim kaynakları, ders materyalleri ve
                     fırsat eşitliği için içerikler sunuyoruz.
                 </p>
-
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-6">
+            <div class="col-lg-3 col-md-6 col-6">
                 <h5 class="footer-title">Hızlı Erişim</h5>
                 <ul class="footer-links">
                     <li><a href="{% url 'dashboard/home' %}">Ana Sayfa</a></li>
@@ -28,7 +26,7 @@
                 </ul>
             </div>
 
-            <div class="col-lg-2 col-md-6">
+            <div class="col-lg-4 col-md-6 col-6">
                 <h5 class="footer-title">Kurumsal</h5>
                 <ul class="footer-links">
                     <li><a href="{% url 'corporate' %}#hakkimizda">Hakkımızda</a></li>
@@ -37,20 +35,23 @@
                     <li><a href="{% url 'corporate' %}#kvkk">KVKK Aydınlatma</a></li>
                 </ul>
             </div>
-
         </div>
 
-        <div class="footer-bottom d-flex justify-content-between align-items-center">
-            <p class="mb-0 text-white-50">
-                © 2025 <strong>Gelişim Kapsül</strong> — Tüm Hakları Saklıdır.
-            </p>
-
-            <div class="footer-bottom-links">
-                <a href="{% url 'privacy' %}">Gizlilik</a>
-                <span>•</span>
-                <a href="{% url 'terms' %}">Kullanım Şartları</a>
+        <div class="footer-bottom">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0 copyright-text">
+                        &copy; 2025 <strong class="text-white">Gelişim Kapsül</strong> — Tüm Hakları Saklıdır.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <div class="footer-bottom-links">
+                        <a href="{% url 'privacy' %}">Gizlilik Politikası</a>
+                        <span class="separator"></span>
+                        <a href="{% url 'terms' %}">Kullanım Şartları</a>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
 </footer>
