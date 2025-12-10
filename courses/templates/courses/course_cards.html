@@ -1,81 +1,96 @@
-<div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+<style>
+    .hover-card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-card-lift:hover { transform: translateY(-5px); box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important; }
+    .img-overlay-gradient { background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
+</style>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-4">
     
-    <!-- KART 1: WEB PROGRAMLAMA -->
     <div class="col">
-        <div class="card card-custom h-100 border-0 shadow-sm">
-            <img src="https://placehold.co/600x350/1A374D/ffffff?text=Web+Dev" class="card-img-top" alt="Web">
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift">
+            <div class="position-relative">
+                <span class="position-absolute top-0 start-0 m-3 badge bg-white text-primary shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
+                    Yazılım
+                </span>
+                <img src="https://placehold.co/600x350/1A374D/ffffff?text=Web+Dev" class="card-img-top object-fit-cover" style="height: 220px;" alt="Course">
+                <div class="position-absolute bottom-0 end-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur shadow-sm rounded-pill px-2 py-1">
+                    <i class="fa-solid fa-star text-warning me-1"></i> 4.8
+                </div>
+            </div>
             
-            <div class="card-body">
-                <div class="d-flex justify-content-between mb-2">
-                    <span class="badge bg-primary bg-opacity-10 text-primary">Yazılım</span>
-                    <small class="text-warning fw-bold"><i class="bi bi-star-fill"></i> 4.8</small>
+            <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold text-dark mb-2">Web Programlama Kampı</h5>
+                <p class="card-text text-muted small mb-4 line-clamp-2">HTML, CSS ve Django ile modern web siteleri geliştirmeyi öğrenin.</p>
+                
+                <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="https://placehold.co/100/1A374D/fff?text=AI" class="rounded-circle border border-2 border-white shadow-sm" width="35" height="35">
+                        <span class="small fw-bold text-secondary">Dr. Arda Irmak</span>
+                    </div>
+                    <a href="{% url 'material_list' %}?course=Web Programlama" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">
+                        İncele <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
                 </div>
-                <h5 class="card-title fw-bold mb-2">Web Programlama</h5>
-                <p class="card-text text-muted small">HTML, CSS, Django ile sıfırdan modern web siteleri geliştirmeyi öğrenin.</p>
-                <div class="d-flex align-items-center gap-2 mb-3">
-                    <i class="bi bi-person-circle text-secondary"></i>
-                    <small class="text-muted">Dr. Arda Irmak</small>
-                </div>
-            </div>
-            <div class="card-footer bg-white border-0 pb-3">
-                <a href="{% url 'material_list' %}?course=Web Programlama" class="btn btn-outline-primary w-100 fw-bold">
-                    Derse Git <i class="bi bi-arrow-right"></i>
-                </a>
             </div>
         </div>
     </div>
 
-    <!-- KART 2: MATEMATİK -->
     <div class="col">
-        <div class="card card-custom h-100 border-0 shadow-sm">
-            <img src="https://placehold.co/600x350/F2994A/ffffff?text=Matematik" class="card-img-top" alt="Math">
-            <div class="card-body">
-                <div class="d-flex justify-content-between mb-2">
-                    <span class="badge bg-danger bg-opacity-10 text-danger">Akademik</span>
-                    <small class="text-warning fw-bold"><i class="bi bi-star-fill"></i> 4.9</small>
-                </div>
-                <h5 class="card-title fw-bold mb-2">Matematik</h5>
-                <p class="card-text text-muted small">Türev, İntegral ve Lineer Cebir konularını derinlemesine keşfedin.</p>
-                <div class="d-flex align-items-center gap-2 mb-3">
-                    <i class="bi bi-person-circle text-secondary"></i>
-                    <small class="text-muted">Dr. Edanur Bozlar</small>
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift">
+            <div class="position-relative">
+                <span class="position-absolute top-0 start-0 m-3 badge bg-white text-warning shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
+                    Akademik
+                </span>
+                <img src="https://placehold.co/600x350/F2994A/ffffff?text=Matematik" class="card-img-top object-fit-cover" style="height: 220px;" alt="Course">
+                <div class="position-absolute bottom-0 end-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur shadow-sm rounded-pill px-2 py-1">
+                    <i class="fa-solid fa-star text-warning me-1"></i> 4.9
                 </div>
             </div>
-            <div class="card-footer bg-white border-0 pb-3">
-                <a href="{% url 'material_list' %}?course=Matematik" class="btn btn-outline-danger w-100 fw-bold">
-                    Derse Git <i class="bi bi-arrow-right"></i>
-                </a>
+            
+            <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold text-dark mb-2">İleri Matematik</h5>
+                <p class="card-text text-muted small mb-4 line-clamp-2">Türev, İntegral ve Lineer Cebir konularını derinlemesine öğrenin.</p>
+                
+                <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="https://placehold.co/100/F2994A/fff?text=EB" class="rounded-circle border border-2 border-white shadow-sm" width="35" height="35">
+                        <span class="small fw-bold text-secondary">Dr. Edanur Bozlar</span>
+                    </div>
+                    <a href="{% url 'material_list' %}?course=Matematik" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold">
+                        İncele <i class="fa-solid fa-arrow-right ms-1"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- KART 3: C# -->
     <div class="col">
-        <div class="card card-custom h-100 border-0 shadow-sm">
-            <img src="https://placehold.co/600x350/406882/ffffff?text=C%23+.NET" class="card-img-top" alt="C#">
-            <div class="card-body">
-                <div class="d-flex justify-content-between mb-2">
-                    <span class="badge bg-success bg-opacity-10 text-success">Yazılım</span>
-                    <small class="text-warning fw-bold"><i class="bi bi-star-fill"></i> 4.7</small>
-                </div>
-                <h5 class="card-title fw-bold mb-2">C# ve .NET Core</h5>
-                <p class="card-text text-muted small">Masaüstü ve backend geliştirme dünyasına hızlı bir giriş yapın.</p>
-                <div class="d-flex align-items-center gap-2 mb-3">
-                    <i class="bi bi-person-circle text-secondary"></i>
-                    <small class="text-muted">Dr. Ali Ceylan</small>
-                </div>
-            </div>
-            <div class="card-footer bg-white border-0 pb-3">
-                <a href="#" class="btn btn-outline-success w-100 fw-bold">
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift grayscale-hover">
+            <div class="position-relative">
+                <span class="position-absolute top-0 start-0 m-3 badge bg-white text-info shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
+                    Backend
+                </span>
+                <img src="https://placehold.co/600x350/406882/ffffff?text=C%23+.NET" class="card-img-top object-fit-cover" style="height: 220px;" alt="Course">
+                <div class="position-absolute top-50 start-50 translate-middle badge bg-dark px-3 py-2 fs-6 rounded-3 shadow">
                     Yakında
-                </a>
+                </div>
+            </div>
+            
+            <div class="card-body p-4 d-flex flex-column">
+                <h5 class="card-title fw-bold text-dark mb-2">C# ve .NET Core</h5>
+                <p class="card-text text-muted small mb-4 line-clamp-2">Masaüstü ve backend dünyasına profesyonel bir giriş yapın.</p>
+                
+                <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="https://placehold.co/100/406882/fff?text=AC" class="rounded-circle border border-2 border-white shadow-sm" width="35" height="35">
+                        <span class="small fw-bold text-secondary">Dr. Ali Ceylan</span>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill px-3 fw-bold text-muted" disabled>
+                        Beklemede
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
+    </div>
 
 </div>
-
-<style>
-    .card-custom { transition: transform 0.2s; }
-    .card-custom:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; }
-</style>
