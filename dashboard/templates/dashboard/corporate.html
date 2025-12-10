@@ -1,13 +1,9 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
 
-{% block css_files %}
-<link href="{% static 'css/corporate.css' %}" rel="stylesheet">
-{% endblock %}
-
 {% block content %}
 
-<header class="kurumsal-hero-section">
+<header id="hakkimizda" class="kurumsal-hero-section">
     <div class="kurumsal-hero-overlay"></div>
     <div class="container position-relative z-2">
         <div class="row justify-content-center text-center">
@@ -54,7 +50,7 @@
 
 <div class="container kurumsal-main-content-wrapper">
 
-    <section id="hakkimizda" class="kurumsal-section-spacing">
+    <section class="kurumsal-section-spacing">
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <h6 class="kurumsal-text-orange fw-bold text-uppercase kurumsal-ls-2 mb-3">Biz Kimiz?</h6>
