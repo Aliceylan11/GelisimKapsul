@@ -26,24 +26,47 @@
               <li class="nav-item">
               <a class="nav-link text-white" href="{% url 'pricing' %}">Fiyatlandırma</a>           
                </li>
-              {% if user.is_authenticated %}
-                  <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle text-white d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {% if user.user_type == 'instructor' %}
+                                  <span class="badge rounded-pill me-2 bg-danger" style="font-size: 0.75rem;">
+                                      🎓 {{ user.get_user_type_display }}
+                                  </span>
+
+                              {% elif user.user_type == 'student' %}
+                                  <span class="badge rounded-pill me-2 bg-info text-dark" style="font-size: 0.75rem;">
+                                      📚 {{ user.get_user_type_display }}
+                                  </span>
+
+                              {% elif user.user_type == 'premium' %}
+                                  <span class="badge rounded-pill me-2 bg-warning text-dark" style="font-size: 0.75rem;">
+                                      🌟 {{ user.get_user_type_display }}
+                                  </span>
+
+                              {% else %}
+                                  <span class="badge rounded-pill me-2 bg-secondary" style="font-size: 0.75rem;">
+                                      👤 {{ user.get_user_type_display }}
+                                  </span>
+
+                              {% endif %}
                           {{ user.username }}
                       </a>
                       <ul class="dropdown-menu dropdown-menu-end shadow">
                           <li><a class="dropdown-item" href="{% url 'accounts/profile' %}">Profilim</a></li>
-                          <li><a class="dropdown-item" href="#">Derslerim</a></li>
+                          <li><a class="dropdown-item" href="{% url 'courses/list' %}">Derslerim</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li>
-                              <!--<form action="{% url 'logout' %}" method="post" class="d-inline">
+                              <form action="{% url 'logout' %}" method="post" class="d-inline">
                                   {% csrf_token %}
-                                  <button type="submit" class="dropdown-item text-danger w-100 text-start">Çıkış Yap</button>
-                              </form>-->
-                          </li>
+                                  <button type="submit" class="dropdown-item w-100 text-start fw-bold" style="color: #fd7e14;">
+                                      Çıkış Yap
+                                  </button>
+                              </form>
+                          </li>                    
                       </ul>
                   </li>
-              {% else %}
+                {% else %}
                   <li class="nav-item d-grid d-lg-block">
                       <a href="{% url 'accounts/login' %}" class="btn btn-outline-light">Giriş Yap</a>
                   </li>

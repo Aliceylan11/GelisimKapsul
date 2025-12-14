@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-lg border-0 rounded-4">
+                
+                <div class="card-header bg-primary text-white text-center py-4 rounded-top-4" style="background: linear-gradient(135deg, #1A374D, #406882);">
+                    <h4 class="mb-0 fw-bold"><i class="bi bi-credit-card-2-front"></i> Güvenli Ödeme</h4>
+                    <p class="mb-0 small opacity-75">Gelişim Kapsül Test Ödemesi</p>
+                </div>
+
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+                        <span class="text-muted">Ödenecek Tutar:</span>
+                        <span class="fs-4 fw-bold text-success">1.00 ₺</span>
+                    </div>
+
+                    <form id="fakePaymentForm">
+                        
+                        <div class="mb-3">
+                            <label class="form-label text-muted small fw-bold">Kart Sahibi</label>
+                            <input type="text" class="form-control form-control-lg" placeholder="Ad Soyad" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label text-muted small fw-bold">Kart Numarası</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-credit-card"></i></span>
+                                <input type="text" class="form-control form-control-lg" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 mb-3">
+                                <label class="form-label text-muted small fw-bold">Son Kullanma (Ay/Yıl)</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label text-muted small fw-bold">CVV</label>
+                                <input type="text" class="form-control form-control-lg" placeholder="123" maxlength="3" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-warning w-100 btn-lg fw-bold py-3 mt-2 text-dark" id="payButton">
+                            <i class="bi bi-lock-fill"></i> Güvenli Öde
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card-footer bg-light text-center py-3">
+                    <small class="text-muted"><i class="bi bi-shield-check"></i> Bu bir simülasyondur. Kartınızdan para çekilmez.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('fakePaymentForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Sayfanın yenilenmesini engelle
+
+        const btn = document.getElementById('payButton');
+        const originalText = btn.innerHTML;
+
+        // 1. Butonu yükleniyor moduna al
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Banka ile İletişim Kuruluyor...';
+
+        // 2. 3 Saniye bekle (Gerçekçilik katmak için)
+        setTimeout(function() {
+            // 3. Başarılı oldu!
+            btn.classList.remove('btn-warning', 'text-dark');
+            btn.classList.add('btn-success', 'text-white');
+            btn.innerHTML = '<i class="bi bi-check-circle-fill"></i> Ödeme Başarılı!';
+
+            // 4. Kullanıcıyı yönlendir (SweetAlert ile şık bir uyarı da verebiliriz ama şimdilik alert yeter)
+            setTimeout(function() {
+                alert("Tebrikler! Ders erişiminize açıldı.");
+                // Buraya gidilecek sayfanın adresini yazıyoruz:
+                window.location.href = "{% url 'material_list' %}"; 
+            }, 1000);
+
+        }, 3000); // 3000 milisaniye = 3 saniye
+    });
+</script>
+{% endblock %}

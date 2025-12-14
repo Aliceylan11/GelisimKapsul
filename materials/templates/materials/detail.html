@@ -6,7 +6,7 @@
         <div>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-1">
-                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-secondary">Dersler</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'courses/list' %}" class="text-decoration-none text-secondary">Dersler</a></li>
                     <li class="breadcrumb-item"><a href="{% url 'material_list' %}" class="text-decoration-none text-secondary">Materyaller</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ material.title }}</li>
                 </ol>
