@@ -7,6 +7,7 @@ class CustomUser(AbstractUser):
         ('regular', 'Standart Kullanıcı'),
         ('student', 'Öğrenci'),
         ('premium', 'Premium Üye'),
+        ('instructor', 'Eğitmen'),
     )
 
     
