@@ -6,44 +6,50 @@
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-5">
                     <h2 class="text-center fw-bold mb-4" style="color: #2c3e50;">Aramıza Katıl</h2>
-                    <p class="text-center text-muted mb-4">Eğitim dünyasına ilk adımını at.</p>
                     
                     <form method="POST">
                         {% csrf_token %}
                         
+                        <div class="mb-3">
+                            <label class="form-label text-muted">Kullanıcı Adı</label>
+                            <input type="text" name="username" class="form-control" required>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted">Ad</label>
-                                <input type="text" name="first_name" class="form-control" placeholder="Adınız" required>
+                                <input type="text" name="first_name" class="form-control" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label text-muted">Soyad</label>
-                                <input type="text" name="last_name" class="form-control" placeholder="Soyadınız" required>
+                                <input type="text" name="last_name" class="form-control" required>
                             </div>
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label text-muted">E-posta Adresi</label>
-                            <input type="email" name="email" class="form-control" placeholder="ogrenci@universite.edu.tr" required>
-                           
+                            <label class="form-label text-muted">E-posta (Edu mail girersen ücretsiz)</label>
+                            <input type="email" name="email" class="form-control" placeholder="ogrenci@gumushane.edu.tr" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted">Üniversite</label>
+                                <input type="text" name="university" class="form-control" placeholder="Gümüşhane Üni.">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label text-muted">Bölüm</label>
+                                <input type="text" name="department" class="form-control" placeholder="Bilgisayar Prog.">
+                            </div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted">Şifre</label>
-                            <input type="password" name="password" class="form-control" placeholder="******" required>
+                            <input type="password" name="password" class="form-control" required>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted">Şifre Tekrar</label>
-                            <input type="password" name="confirm_password" class="form-control" placeholder="******" required>
-                        </div>
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="kvkkCheck" required>
-                            <label class="form-check-label text-muted" for="kvkkCheck" style="font-size: 0.9rem;">
-                                <a href="#" class="text-decoration-none" style="color: #fd7e14;">Kullanıcı Sözleşmesi</a>'ni ve 
-                                <a href="#" class="text-decoration-none" style="color: #fd7e14;">KVKK Aydınlatma Metni</a>'ni okudum, onaylıyorum.
-                            </label>
+                            <input type="password" name="confirm_password" class="form-control" required>
                         </div>
 
                         <button type="submit" class="btn w-100 btn-lg text-white fw-bold mt-3" style="background-color: #fd7e14; border: none;">Kayıt Ol</button>
