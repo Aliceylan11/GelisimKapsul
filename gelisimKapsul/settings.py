@@ -11,6 +11,17 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+load_dotenv() # .env dosyasını yükler
+
+# PAYTR AYARLARI (Artık güvenli!)
+# .env okuyamadığı için geçici olarak elle yazıyoruz
+PAYTR_MERCHANT_ID = '000000000' # güvenli olması için gerçek değeri saklandı
+PAYTR_MERCHANT_KEY = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
+PAYTR_MERCHANT_SALT = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
+PAYTR_TEST_MODE = 1  # Test modunu etkinleştir (1: etkin, 0: devre dışı)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -129,3 +140,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+

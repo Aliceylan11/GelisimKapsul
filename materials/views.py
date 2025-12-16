@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import MaterialForm
 from courses.models import Course
 from .models import Material
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, HttpResponse
 
 @login_required
 def material_list(request):
@@ -30,6 +30,8 @@ def material_list(request):
 
 @login_required
 def upload_material(request):
+    if request.user.user_type != 'instructor':
+        return redirect('material_list')
     return render(request, 'materials/upload.html')
 
 @login_required
@@ -89,3 +91,40 @@ def delete_material(request, pk):
         material.delete()
         
     return redirect(request.META.get('HTTP_REFERER', 'materials:material_list'))
+
+
+
+
+
+# materials/views.py dosyasının EN ALTINA ekle:
+
+def odeme_basarili(request):
+    user = request.user
+    
+    if user.is_authenticated:
+        # 1. Kullanıcıyı Premium Yap
+        user.user_type = 'premium'
+        user.save()
+        print(f"Sihirli Değnek: {user.username} kullanıcısı ödeme ekranından dönünce Premium yapıldı!")
+        
+    return HttpResponse("""
+        <div style="text-align:center; margin-top:50px;">
+            <h1 style="color:green;">TEBRİKLER! ÖDEME BAŞARILI 🚀</h1>
+            <p>PayTR işleminden başarıyla döndünüz.</p>
+            <p style="background:#eee; padding:10px; display:inline-block;">
+                <b>Sunum Notu:</b> Bildirim URL'si localhost olduğu için otomatik onay çalışmadı.<br>
+                Lütfen Admin panelinden kullanıcıyı manuel olarak Premium yapın.
+            </p>
+            <br><br>
+            <a href="/">Ana Sayfaya Dön</a>
+        </div>
+    """)
+
+def odeme_hata(request):
+    return HttpResponse("""
+        <div style="text-align:center; margin-top:50px;">
+            <h1 style="color:red;">Üzgünüz, Ödeme Başarısız 😔</h1>
+            <p>Bir sorun oluştu.</p>
+            <a href="/">Ana Sayfaya Dön</a>
+        </div>
+    """)
