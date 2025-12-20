@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
     department = models.CharField(max_length=150, blank=True, null=True, verbose_name="Bölüm")
     bio = models.TextField(max_length=500, blank=True, null=True, verbose_name="Hakkımda")
     profile_image = models.ImageField(upload_to='avatars/', blank=True, null=True, default='avatars/default.png', verbose_name="Profil Fotoğrafı")
-
+    verification_code = models.CharField(max_length=6, blank=True, null=True)
     
     user_type = models.CharField(
         max_length=20, 
@@ -28,13 +28,17 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, verbose_name="E-posta Adresi")
 
     def save(self, *args, **kwargs):
-       
         
-        if self.user_type == 'regular' and self.email:
+        if self.email:
+            
             email_domain = self.email.split('@')[-1]
-            if 'edu.tr' in email_domain or 'edu' in email_domain:
-                self.user_type = 'student'
-        
+            if email_domain.startswith('ogr.') and ('edu.tr' in email_domain or 'edu' in email_domain):
+                self.user_type = 'student' 
+            elif 'edu.tr' in email_domain or 'edu' in email_domain:
+                self.user_type = 'instructor' 
+            else:
+                self.user_type = 'regular' 
+                
         super().save(*args, **kwargs)
 
     def __str__(self):

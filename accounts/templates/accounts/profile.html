@@ -25,6 +25,7 @@
                 <span class="badge bg-secondary mb-3 mt-2 px-3 py-2">
                     {% if user.user_type == 'student' %} Öğrenci 
                     {% elif user.user_type == 'premium' %} Premium Üye
+                    {% elif user.user_type == 'instructor' %} Eğitmen
                     {% else %} Standart Kullanıcı {% endif %}
                 </span>
 
@@ -66,7 +67,13 @@
 
             <div class="alert alert-info border-0 rounded-4 mt-4">
                 <i class="fa-solid fa-circle-info me-2"></i> 
-                Merhaba <strong>{{ user.first_name }}</strong>, şu an öğrenci statüsündesin ve tüm kaynaklara ücretsiz erişebilirsin.
+                Merhaba <strong>{{ user.first_name }} {{user.last_name}}</strong>, şu an   
+                    {% if user.user_type == 'student' %} Öğrenci  statüsündesin ve tüm kaynaklara ücretsiz erişebilirsin.
+                    {% elif user.user_type == 'premium' %} Premium Üye statüsündesin ve tüm kaynaklara ücretsiz erişebilirsin.
+                    {% elif user.user_type == 'instructor' %} Eğitmen  statüsündesin ve tüm kaynaklara ücretsiz erişebilirsin.
+                    {% else %} Standart Kullanıcı  statüsündesin ve tüm kaynakların ücretini ödedikten sonra erişebilirsin.
+                    {% endif %}  
+                   
             </div>
 
         </div>

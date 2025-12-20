@@ -18,10 +18,16 @@ load_dotenv() # .env dosyasını yükler
 
 # PAYTR AYARLARI (Artık güvenli!)
 # .env okuyamadığı için geçici olarak elle yazıyoruz
-PAYTR_MERCHANT_ID = '000000000' # güvenli olması için gerçek değeri saklandı
-PAYTR_MERCHANT_KEY = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
-PAYTR_MERCHANT_SALT = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
-PAYTR_TEST_MODE = 1  # Test modunu etkinleştir (1: etkin, 0: devre dışı)
+#PAYTR_MERCHANT_ID = '000000000' # güvenli olması için gerçek değeri saklandı
+#PAYTR_MERCHANT_KEY = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
+#PAYTR_MERCHANT_SALT = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
+#PAYTR_TEST_MODE = 1  # Test modunu etkinleştir (1: etkin, 0: devre dışı)
+
+PAYTR_MERCHANT_ID='0000000'
+PAYTR_MERCHANT_KEY='00000000000'
+PAYTR_MERCHANT_SALT='00000000000000'
+PAYTR_TEST_MODE=1
+DEBUG=True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -141,3 +147,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+# --- EMAIL AYARLARI (GMAIL) ---
+# Django'nun mail göndermek için kullanacağı altyapı
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# GÖNDERİCİ BİLGİLERİ
+# Buraya KENDİ kullandığın aktif bir gmail adresini yaz.
+# Django bu adresi kullanarak mail atacak.
+EMAIL_HOST_USER = 'aliceylan024@gmail.com' 
+
+# BURASI ÇOK ÖNEMLİ:
+# Buraya normal gmail şifreni YAZMA!
+# Google'dan alacağın 16 haneli "Uygulama Şifresi"ni yazacaksın.
+EMAIL_HOST_PASSWORD = 'qdnbufuxaixucfnc'

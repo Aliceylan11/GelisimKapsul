@@ -4,6 +4,10 @@ from .forms import MaterialForm
 from courses.models import Course
 from .models import Material
 from django.shortcuts import get_object_or_404, HttpResponse
+from django.contrib.auth import get_user_model
+from django.contrib import messages
+User = get_user_model()
+
 
 @login_required
 def material_list(request):
@@ -34,8 +38,11 @@ def upload_material(request):
         return redirect('material_list')
     return render(request, 'materials/upload.html')
 
+
+
 @login_required
 def material_detail(request, id):
+    
     if request.user.user_type == 'regular':
         return redirect('access_denied')
     materials_data = Material.objects.all().values()
@@ -46,17 +53,23 @@ def material_detail(request, id):
             break     
     return render(request, 'materials/detail.html', {'material': selected_material})
 
+@login_required
 def access_denied(request):
+    if request.user.user_type in ['student', 'instructor', 'premium']:
+        return redirect('material_list')
     return render(request, 'materials/access_denied.html')
 
+@login_required
 def payment(request):
+    if  request.user.user_type in ['student', 'instructor', 'premium']:
+        return redirect('material_list') 
     return render(request, 'materials/payment.html')
 
 
 @login_required
 def add_material(request): 
     if not request.user.is_staff:
-         return redirect('home')
+         return redirect('home')    
 
     if request.method == 'POST': 
         form = MaterialForm(request.POST, request.FILES)
@@ -96,15 +109,15 @@ def delete_material(request, pk):
 
 
 
-# materials/views.py dosyasının EN ALTINA ekle:
-
+@login_required
 def odeme_basarili(request):
     user = request.user
+    if request.user.is_authenticated and request.user.user_type in ['student', 'instructor', 'premium']:
+        return redirect('dashboard/home')
     
-    if user.is_authenticated:
-        # 1. Kullanıcıyı Premium Yap
+    if user.is_authenticated: 
+        User.objects.filter(id=request.user.id).update(user_type='premium')
         user.user_type = 'premium'
-        user.save()
         print(f"Sihirli Değnek: {user.username} kullanıcısı ödeme ekranından dönünce Premium yapıldı!")
         
     return HttpResponse("""
@@ -119,7 +132,10 @@ def odeme_basarili(request):
             <a href="/">Ana Sayfaya Dön</a>
         </div>
     """)
+    
+    
 
+@login_required
 def odeme_hata(request):
     return HttpResponse("""
         <div style="text-align:center; margin-top:50px;">

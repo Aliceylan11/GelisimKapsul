@@ -7,13 +7,15 @@ import random
 import os
 from django.conf import settings
 from django.shortcuts import render, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-
+from django.views.decorators.csrf import csrf_exempt 
+from django.shortcuts import redirect
 # Kullanıcı modelini çekiyoruz
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
 def odeme_sayfasi(request):
+    if request.user.user_type in ['student', 'instructor', 'premium']:
+        return redirect('material_list')
     # 1. AYARLARI ÇEKİYORUZ
     # Settings.py içindeki değerlerin string olduğundan emin oluyoruz.
     merchant_id = str(settings.PAYTR_MERCHANT_ID)

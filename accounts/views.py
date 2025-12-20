@@ -3,6 +3,9 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth import get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from random import randint
+from django.core.mail import send_mail
+from django.conf import settings
 
 User = get_user_model()
 
@@ -33,6 +36,7 @@ def login_view(request):
 
     return render(request, 'accounts/login.html')
 
+
 def register_view(request):
     if request.user.is_authenticated:
         return redirect('dashboard/home')
@@ -44,7 +48,6 @@ def register_view(request):
         email = request.POST.get("email")
         password = request.POST.get("password")
         confirm_password = request.POST.get("confirm_password")
-        
         university = request.POST.get("university")
         department = request.POST.get("department")
 
@@ -70,22 +73,36 @@ def register_view(request):
         
         user.university = university
         user.department = department
+        
+        user.is_active=False
+        code = randint(100000, 999999)
+        user.verification_code = str(code)
         user.save() 
-
-        login(request, user)
-        messages.success(request, "Kayıt tamam, içeri alındın.")
-        return redirect("dashboard/home")
+        # 5. Mail Gönderme İşlemi
+        subject = 'Gelişim Kapsül - Doğrulama Kodun'
+        message = f'Merhaba {first_name}, aramıza hoş geldin! Hesabını doğrulamak için kodun: {code}'
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+        send_mail(subject, message, from_email, recipient_list)
+        
+        # 6. Session'a maili kaydet (Bir sonraki sayfada kimi doğruladığımızı bilmek için)
+        request.session['email'] = email
+        messages.info(request, "Mailine gelen kodu girerek hesabını doğrula.")
+        return redirect("verify_email")
 
     return render(request, "accounts/register.html")
+
 
 def logout_view(request):
     logout(request)
     messages.info(request, "Çıkış yapıldı, kendine iyi bak.")
     return redirect('accounts/login')
 
+
 @login_required(login_url='accounts/login')
 def profile_view(request):
     return render(request, 'accounts/profile.html')
+
 
 @login_required(login_url='accounts/login')
 def profile_duzenle_view(request):
@@ -105,3 +122,39 @@ def profile_duzenle_view(request):
         return redirect('accounts/profile')
         
     return render(request, 'accounts/profile_duzenle.html')
+
+
+def verify_email(request):
+    # Eğer session'da email yoksa (yani kayıt olmadan buraya geldiyse) register'a at
+    if 'email' not in request.session:
+        messages.warning(request, "Önce kayıt olmalısın.")
+        return redirect('accounts/register') 
+    
+    if request.method == "POST":
+        entered_code = request.POST.get("code")
+        email = request.session.get('email')
+
+        try:
+            user = User.objects.get(email=email)
+            
+            # Kod Doğruysa
+            if user.verification_code == entered_code:
+                user.is_active = True
+                user.verification_code = None  # Kodu temizle ki tekrar kullanılmasın
+                user.save()
+                
+                # Oturumu temizle ve giriş yaptır
+                del request.session['email'] 
+                login(request, user)
+                
+                messages.success(request, "Hesabın doğrulandı, hoş geldin!")
+                return redirect("dashboard/home") # Ana sayfana yönlendir
+            
+            # Kod Yanlışsa
+            else:
+                messages.error(request, "Girdiğin kod hatalı, tekrar dene.")
+        
+        except User.DoesNotExist:
+            messages.error(request, "Kullanıcı bulunamadı.")
+
+    return render(request, "accounts/verify.html")

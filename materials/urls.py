@@ -1,9 +1,8 @@
 from django.urls import path
-from . import views   # <-- Bu dosya Adım 1'deki kodları içeriyor
-from . import paytr   # <-- Bu dosya ödeme kodlarını içeriyor
+from . import views  
+from . import paytr  
 
 urlpatterns = [
-    # Normal Ders İşlemleri (views.py'dan geliyor)
     path('', views.material_list, name='material_list'),
     path('upload/', views.upload_material, name='upload_material'),
     path('<int:id>/', views.material_detail, name='material_detail'),
