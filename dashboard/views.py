@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 def home(request):
     context_dersler = [
@@ -31,11 +33,25 @@ def home(request):
             "resim": "https://placehold.co/600x400/2D3436/white?text=Mobil",
             "egitmen": "Ali CEYLAN"
         },
-        
     ]
 
-    return render(request, 'dashboard/home.html', {"dersler": context_dersler})
+    ogrenci_sayisi = User.objects.count()
+    egitmen_sayisi = User.objects.filter(is_staff=True).count()
 
+    if egitmen_sayisi < 4:
+        egitmen_sayisi = 4
+
+    context = {
+        "dersler": context_dersler,
+        "stats": {
+            "ogrenci": ogrenci_sayisi,
+            "egitmen": egitmen_sayisi,
+            "ders": len(context_dersler),
+            "memnuniyet": 98
+        }
+    }
+
+    return render(request, 'dashboard/home.html', context)
 
 def privacy_policy(request):
     return render(request, 'dashboard/privacy.html') 
@@ -47,4 +63,18 @@ def pricing(request):
     return render(request, 'dashboard/pricing.html')
 
 def corporate(request):
-    return render(request, 'dashboard/corporate.html')
+    ogrenci_sayisi = User.objects.count()
+    egitmen_sayisi = User.objects.filter(is_staff=True).count()
+
+    if egitmen_sayisi < 4:
+        egitmen_sayisi = 4
+
+    context = {
+        "stats": {
+            "ogrenci": ogrenci_sayisi,
+            "egitmen": egitmen_sayisi,
+            "ders": 4,
+            "memnuniyet": 98
+        }
+    }
+    return render(request, 'dashboard/corporate.html', context)
