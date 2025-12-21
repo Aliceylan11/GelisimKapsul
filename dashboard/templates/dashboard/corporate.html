@@ -1,5 +1,6 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block content %}
 
@@ -21,30 +22,43 @@
 
 <div class="container kurumsal-stats-wrapper">
     <div class="row g-0 bg-white shadow-lg rounded-4 overflow-hidden border border-light">
+        
         <div class="col-lg-3 col-6 border-end">
             <div class="p-4 text-center">
-                <h3 class="fw-bold kurumsal-text-dark-primary display-5 mb-1">5.000+</h3>
-                <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Aktif Öğrenci</span>
+                <h3 class="fw-bold kurumsal-text-dark-primary display-5 mb-1">
+                    {{ stats.ogrenci|default:"150"|intcomma }}+
+                </h3>
+                <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Aktif Kullanıcı</span>
             </div>
         </div>
+
         <div class="col-lg-3 col-6 border-end">
             <div class="p-4 text-center">
-                <h3 class="fw-bold kurumsal-text-orange display-5 mb-1">120+</h3>
+                <h3 class="fw-bold kurumsal-text-orange display-5 mb-1">
+                    {{ stats.egitmen|default:"10" }}+
+                </h3>
                 <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Uzman Eğitmen</span>
             </div>
         </div>
+
         <div class="col-lg-3 col-6 border-end">
             <div class="p-4 text-center">
-                <h3 class="fw-bold kurumsal-text-dark-primary display-5 mb-1">850+</h3>
+                <h3 class="fw-bold kurumsal-text-dark-primary display-5 mb-1">
+                    {{ stats.ders|default:"20" }}+
+                </h3>
                 <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Toplam Ders</span>
             </div>
         </div>
+
         <div class="col-lg-3 col-6">
             <div class="p-4 text-center">
-                <h3 class="fw-bold text-success display-5 mb-1">%98</h3>
+                <h3 class="fw-bold text-success display-5 mb-1">
+                    %{{ stats.memnuniyet }}
+                </h3>
                 <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Memnuniyet Oranı</span>
             </div>
         </div>
+
     </div>
 </div>
 

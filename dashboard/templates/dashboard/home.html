@@ -1,8 +1,8 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
+{% load humanize %} 
 
 {% block content %}
-
 
 <section class="hero-section mb-5 position-relative">
     <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg rounded-4 overflow-hidden" data-bs-ride="carousel" data-bs-interval="5000">
@@ -54,29 +54,60 @@
                 </div>
             </div>
         </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Önceki</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Sonraki</span>
+        </button>
+
     </div>
 </section>
 
-<section class="stats-section mb-5 py-4 bg-white rounded-4 shadow-sm border">
-    <div class="row text-center g-4 justify-content-center">
-        <div class="col-6 col-md-3 border-end border-light-subtle">
-            <h3 class="fw-bold text-lacivert mb-0">100+</h3>
-            <p class="text-muted small mb-0">Video Ders</p>
+<div class="container kurumsal-stats-wrapper">
+    <div class="row g-0 bg-white shadow-lg rounded-4 overflow-hidden border border-light">
+        
+        <div class="col-lg-3 col-6 border-end">
+            <div class="p-4 text-center">
+                <h3 class="fw-bold kurumsal-text-dark-primary display-5 mb-1">
+                    {{ stats.ogrenci|default:"150"|intcomma }}+
+                </h3>
+                <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Aktif Kullanıcı</span>
+            </div>
         </div>
-        <div class="col-6 col-md-3 border-end border-light-subtle">
-            <h3 class="fw-bold text-lacivert mb-0">500+</h3>
-            <p class="text-muted small mb-0">PDF Kaynak</p>
+
+        <div class="col-lg-3 col-6 border-end">
+            <div class="p-4 text-center">
+                <h3 class="fw-bold kurumsal-text-orange display-5 mb-1">
+                    {{ stats.egitmen|default:"10" }}+
+                </h3>
+                <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Uzman Eğitmen</span>
+            </div>
         </div>
-        <div class="col-6 col-md-3 border-end border-light-subtle">
-            <h3 class="fw-bold text-lacivert mb-0">1.2k</h3>
-            <p class="text-muted small mb-0">Öğrenci</p>
+
+        <div class="col-lg-3 col-6 border-end">
+            <div class="p-4 text-center">
+                <h3 class="fw-bold kurumsal-text-dark-primary display-5 mb-1">
+                    {{ stats.ders|default:"20" }}+
+                </h3>
+                <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Toplam Ders</span>
+            </div>
         </div>
-        <div class="col-6 col-md-3">
-            <h3 class="fw-bold text-turuncu mb-0">∞</h3>
-            <p class="text-muted small mb-0">Ücretsiz Erişim</p>
+
+        <div class="col-lg-3 col-6">
+            <div class="p-4 text-center">
+                <h3 class="fw-bold text-success display-5 mb-1">
+                    %{{ stats.memnuniyet }}
+                </h3>
+                <span class="text-secondary small text-uppercase fw-bold kurumsal-ls-1">Memnuniyet Oranı</span>
+            </div>
         </div>
+
     </div>
-</section>
+</div>
 
 <section class="features mb-5"> 
     <div class="row align-items-center mb-5">
@@ -119,7 +150,6 @@
         </div>
     </div>
 </section>
-
 
 
 <section class="courses-section mb-5">
