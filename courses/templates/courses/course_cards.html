@@ -1,96 +1,57 @@
-<style>
-    .hover-card-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .hover-card-lift:hover { transform: translateY(-5px); box-shadow: 0 1rem 3rem rgba(0,0,0,.1) !important; }
-    .img-overlay-gradient { background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); }
-</style>
-
 <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-3 g-4">
-    
+    {% for course in courses %}
     <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift">
+        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift {% if not course.is_active %}grayscale-hover{% endif %}">
             <div class="position-relative">
-                <span class="position-absolute top-0 start-0 m-3 badge bg-white text-primary shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
-                    Yazılım
+                <span class="position-absolute top-0 start-0 m-3 badge bg-white {% if course.category == 'Yazılım' %}text-primary{% elif course.category == 'Akademik' %}text-warning{% else %}text-info{% endif %} shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
+                    {{ course.category }}
                 </span>
-                <img src="https://placehold.co/600x350/1A374D/ffffff?text=Web+Dev" class="card-img-top object-fit-cover" style="height: 220px;" alt="Course">
-                <div class="position-absolute bottom-0 end-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur shadow-sm rounded-pill px-2 py-1">
-                    <i class="fa-solid fa-star text-warning me-1"></i> 4.8
-                </div>
-            </div>
-            
-            <div class="card-body p-4 d-flex flex-column">
-                <h5 class="card-title fw-bold text-dark mb-2">Web Programlama Kampı</h5>
-                <p class="card-text text-muted small mb-4 line-clamp-2">HTML, CSS ve Django ile modern web siteleri geliştirmeyi öğrenin.</p>
                 
-                <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-2">
-                        <img src="https://placehold.co/100/1A374D/fff?text=AI" class="rounded-circle border border-2 border-white shadow-sm" width="35" height="35">
-                        <span class="small fw-bold text-secondary">Dr. Arda Irmak</span>
-                    </div>
-                    <a href="{% url 'material_list' %}?course=Web Programlama" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold">
-                        İncele <i class="fa-solid fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+                {% if course.image %}
+                    <img src="{{ course.image.url }}" class="card-img-top object-fit-cover" style="height: 220px;" alt="{{ course.title }}">
+                {% else %}
+                    <img src="https://placehold.co/600x350?text={{ course.title }}" class="card-img-top object-fit-cover" style="height: 220px;" alt="Varsayılan Resim">
+                {% endif %}
 
-    <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift">
-            <div class="position-relative">
-                <span class="position-absolute top-0 start-0 m-3 badge bg-white text-warning shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
-                    Akademik
-                </span>
-                <img src="https://placehold.co/600x350/F2994A/ffffff?text=Matematik" class="card-img-top object-fit-cover" style="height: 220px;" alt="Course">
-                <div class="position-absolute bottom-0 end-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur shadow-sm rounded-pill px-2 py-1">
-                    <i class="fa-solid fa-star text-warning me-1"></i> 4.9
-                </div>
-            </div>
-            
-            <div class="card-body p-4 d-flex flex-column">
-                <h5 class="card-title fw-bold text-dark mb-2">İleri Matematik</h5>
-                <p class="card-text text-muted small mb-4 line-clamp-2">Türev, İntegral ve Lineer Cebir konularını derinlemesine öğrenin.</p>
-                
-                <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
-                    <div class="d-flex align-items-center gap-2">
-                        <img src="https://placehold.co/100/F2994A/fff?text=EB" class="rounded-circle border border-2 border-white shadow-sm" width="35" height="35">
-                        <span class="small fw-bold text-secondary">Dr. Edanur Bozlar</span>
-                    </div>
-                    <a href="{% url 'material_list' %}?course=Matematik" class="btn btn-outline-warning btn-sm rounded-pill px-3 fw-bold">
-                        İncele <i class="fa-solid fa-arrow-right ms-1"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col">
-        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-card-lift grayscale-hover">
-            <div class="position-relative">
-                <span class="position-absolute top-0 start-0 m-3 badge bg-white text-info shadow-sm rounded-pill px-3 py-2 fw-bold z-2">
-                    Backend
-                </span>
-                <img src="https://placehold.co/600x350/406882/ffffff?text=C%23+.NET" class="card-img-top object-fit-cover" style="height: 220px;" alt="Course">
+                {% if not course.is_active %}
                 <div class="position-absolute top-50 start-50 translate-middle badge bg-dark px-3 py-2 fs-6 rounded-3 shadow">
                     Yakında
                 </div>
+                {% endif %}
+
+                <div class="position-absolute bottom-0 end-0 m-3 badge bg-dark bg-opacity-75 backdrop-blur shadow-sm rounded-pill px-2 py-1">
+                    <i class="fa-solid fa-star text-warning me-1"></i> {{ course.rating }}
+                </div>
             </div>
             
             <div class="card-body p-4 d-flex flex-column">
-                <h5 class="card-title fw-bold text-dark mb-2">C# ve .NET Core</h5>
-                <p class="card-text text-muted small mb-4 line-clamp-2">Masaüstü ve backend dünyasına profesyonel bir giriş yapın.</p>
+                <h5 class="card-title fw-bold text-dark mb-2">{{ course.title }}</h5>
+                <p class="card-text text-muted small mb-4 line-clamp-2">{{ course.description }}</p>
                 
                 <div class="mt-auto pt-3 border-top border-light d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center gap-2">
-                        <img src="https://placehold.co/100/406882/fff?text=AC" class="rounded-circle border border-2 border-white shadow-sm" width="35" height="35">
-                        <span class="small fw-bold text-secondary">Dr. Ali Ceylan</span>
+                        <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold shadow-sm" style="width: 35px; height: 35px; font-size: 10px;">
+                            {{ course.instructor_name|slice:":2"|upper }}
+                        </div>
+                        <span class="small fw-bold text-secondary">{{ course.instructor_name }}</span>
                     </div>
+                    
+                    {% if course.is_active %}
+                     <a href="{% url 'material_list' %}?course={{ course.title }}" class="btn btn-outline-primary ...">
+                        İncele <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+                   {% else %}
                     <button class="btn btn-light btn-sm rounded-pill px-3 fw-bold text-muted" disabled>
                         Beklemede
                     </button>
+                    {% endif %}
                 </div>
             </div>
         </div>
-    </div>
-
+    </div>
+    {% empty %}
+    <div class="col-12 text-center py-5">
+        <p class="text-muted">Henüz ders eklenmemiş.</p>
+    </div>
+    {% endfor %}
 </div>

@@ -8,7 +8,6 @@ from django.contrib.auth import get_user_model
 from django.contrib import messages
 User = get_user_model()
 
-
 @login_required
 def material_list(request):
     user = request.user
@@ -16,11 +15,13 @@ def material_list(request):
     if user.user_type == 'regular' and not user.is_superuser:
         return redirect('access_denied') 
   
-    course_filter = request.GET.get('course') 
+    course_filter = request.GET.get('course') # Burada "Veri Tabanı - I" metni geliyor
     if course_filter:
-        materials = Material.objects.filter(course__id=course_filter).order_by('-created_at')
+        # course__id yerine course__title kullanarak metin üzerinden filtreleme yapıyoruz
+        materials = Material.objects.filter(course__title=course_filter).order_by('-created_at')
         
-        course_obj = Course.objects.filter(id=course_filter).first()
+        # Burada da id yerine title üzerinden ders objesini buluyoruz
+        course_obj = Course.objects.filter(title=course_filter).first()
         current_course_name = course_obj.title if course_obj else "Bilinmeyen Ders"
     else:
         materials = Material.objects.all().order_by('-created_at')

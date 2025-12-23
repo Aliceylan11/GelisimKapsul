@@ -3,46 +3,53 @@
         <h6 class="fw-bold mb-0 text-dark">
             <i class="fa-solid fa-filter text-primary me-2"></i>Filtrele
         </h6>
-        <a href="#" class="text-decoration-none small text-muted">Temizle</a>
+        <a href="{% url 'courses/list' %}" class="text-decoration-none small text-muted">Temizle</a>
     </div>
 
     <div class="card-body p-4">
-        <div class="mb-4">
-            <label class="small text-uppercase text-muted fw-bold mb-3 ls-1">Kategoriler</label>
-            <div class="d-flex flex-column gap-2">
-                <a href="#" class="d-flex justify-content-between align-items-center p-2 rounded-3 text-decoration-none bg-primary text-white">
-                    <span class="fw-medium small">Tüm Dersler</span>
-                    <span class="badge bg-white text-primary rounded-pill">3</span>
-                </a>
-                <a href="#" class="d-flex justify-content-between align-items-center p-2 rounded-3 text-decoration-none text-dark hover-bg-light">
-                    <span class="fw-medium small">Yazılım</span>
-                    <span class="badge bg-light text-secondary rounded-pill">2</span>
-                </a>
-                <a href="#" class="d-flex justify-content-between align-items-center p-2 rounded-3 text-decoration-none text-dark hover-bg-light">
-                    <span class="fw-medium small">Akademik</span>
-                    <span class="badge bg-light text-secondary rounded-pill">1</span>
-                </a>
-            </div>
-        </div>
+        <form method="GET">
+            <div class="mb-4">
+                <label class="small text-uppercase text-muted fw-bold mb-3 ls-1">Kategoriler</label>
+                <div class="d-flex flex-column gap-2">
+                    <a href="?{% if request.GET.search %}search={{ request.GET.search }}&{% endif %}" 
+                       class="d-flex justify-content-between align-items-center p-2 rounded-3 text-decoration-none {% if not selected_category %}bg-primary text-white{% else %}text-dark hover-bg-light{% endif %}">
+                        <span class="fw-medium small">Tüm Dersler</span>
+                        <span class="badge {% if not selected_category %}bg-white text-primary{% else %}bg-light text-secondary{% endif %} rounded-pill">{{ total_count }}</span>
+                    </a>
 
-        <hr class="border-light my-4">
+                    {% for cat in categories %}
+                    <a href="?category={{ cat.category }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}" 
+                       class="d-flex justify-content-between align-items-center p-2 rounded-3 text-decoration-none {% if selected_category == cat.category %}bg-primary text-white{% else %}text-dark hover-bg-light{% endif %}">
+                        <span class="fw-medium small">{{ cat.category }}</span>
+                        <span class="badge {% if selected_category == cat.category %}bg-white text-primary{% else %}bg-light text-secondary{% endif %} rounded-pill">{{ cat.count }}</span>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
 
-        <div>
-            <label class="small text-uppercase text-muted fw-bold mb-3 ls-1">Puan</label>
-            <div class="form-check mb-2">
-                <input class="form-check-input" type="checkbox" id="star4" checked>
-                <label class="form-check-label small fw-bold text-dark" for="star4">
-                    <span class="text-warning me-1"><i class="fa-solid fa-star"></i></span> 4.5 ve üzeri
-                </label>
+            <hr class="border-light my-4">
+
+            <div>
+                <label class="small text-uppercase text-muted fw-bold mb-3 ls-1">Puan</label>
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" name="min_rating" value="4.5" id="star4" {% if request.GET.min_rating == "4.5" %}checked{% endif %}>
+                    <label class="form-check-label small fw-bold text-dark" for="star4">
+                        <span class="text-warning me-1"><i class="fa-solid fa-star"></i></span> 4.5 ve üzeri
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="min_rating" value="3.0" id="star3" {% if request.GET.min_rating == "3.0" %}checked{% endif %}>
+                    <label class="form-check-label small fw-bold text-dark" for="star3">
+                        <span class="text-warning me-1"><i class="fa-solid fa-star"></i></span> 3.0 ve üzeri
+                    </label>
+                </div>
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="star3">
-                <label class="form-check-label small fw-bold text-dark" for="star3">
-                    <span class="text-warning me-1"><i class="fa-solid fa-star"></i></span> 3.0 ve üzeri
-                </label>
-            </div>
-        </div>
-        
-        <button class="btn btn-primary w-100 mt-4 rounded-pill fw-bold py-2">Uygula</button>
-    </div>
+            
+            {% if request.GET.search %}<input type="hidden" name="search" value="{{ request.GET.search }}">{% endif %}
+            {% if request.GET.sort %}<input type="hidden" name="sort" value="{{ request.GET.sort }}">{% endif %}
+            {% if request.GET.category %}<input type="hidden" name="category" value="{{ request.GET.category }}">{% endif %}
+
+            <button type="submit" class="btn btn-primary w-100 mt-4 rounded-pill fw-bold py-2">Uygula</button>
+        </form>
+    </div>
 </div>
