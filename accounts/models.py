@@ -36,8 +36,7 @@ class CustomUser(AbstractUser):
                 self.user_type = 'student' 
             elif 'edu.tr' in email_domain or 'edu' in email_domain:
                 self.user_type = 'instructor' 
-            else:
-                self.user_type = 'regular' 
+             
                 
         super().save(*args, **kwargs)
 

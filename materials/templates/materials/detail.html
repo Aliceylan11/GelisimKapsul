@@ -7,55 +7,62 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-1">
                     <li class="breadcrumb-item"><a href="{% url 'courses/list' %}" class="text-decoration-none text-secondary">Dersler</a></li>
-                    <li class="breadcrumb-item"><a href="{% url 'material_list' %}" class="text-decoration-none text-secondary">Materyaller</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'material_list' %}?course={{ material.course.id }}" class="text-decoration-none text-secondary">{{ material.course.title }} Materyalleri</a></li>
+                    
                     <li class="breadcrumb-item active" aria-current="page">{{ material.title }}</li>
                 </ol>
             </nav>
             <h3 class="fw-bold" style="color: #1A374D;">{{ material.title }}</h3>
         </div>
-        <a href="{% url 'material_list' %}" class="btn btn-outline-secondary">
-            <i class="bi bi-arrow-left"></i> Listeye Dön
-        </a>
+        <a href="{% url 'material_list' %}?course={{ material.course.title }}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Diğer İçeriklere Dön</a>
     </div>
 
     <div class="row">
         <div class="col-lg-8">
             <div class="card card-custom shadow-sm border-0 mb-4">
-                <div class="card-body p-0">
-                    {% if material.type == 'Video' %}
-                        <div class="ratio ratio-16x9 rounded-top overflow-hidden">
-                            <iframe src="{{ material.source }}" 
-                                    title="YouTube video player" frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
+                            <div class="card-body p-0">
+             {% if material.material_type == 'video' %}
+                    <div class="ratio ratio-16x9 rounded-top overflow-hidden bg-black">
+                            {% if material.video_url %}
+                                <iframe src="{{ material.get_embed_url }}" 
+                                        title="{{ material.title }}" 
+                                        frameborder="0" 
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                        allowfullscreen>
+                                </iframe>
+                            {% elif material.file %}
+                                <video controls class="w-100 h-100">
+                                    <source src="{{ material.file.url }}" type="video/mp4">
+                                </video>
+                            {% endif %}
+                    </div>
 
-                    {% elif material.type == 'PDF' %}
-                        <div class="ratio ratio-4x3 rounded-top overflow-hidden">
-                            <iframe src="{{ material.source }}" style="width:100%; height:100%;" frameborder="0"></iframe>
-                        </div>
+                {% elif material.material_type == 'pdf' %} 
+                    <div class="rounded-top overflow-hidden" style="height: 500px; width: 100%;">
+                        <iframe src="{{ material.file.url }}#toolbar=0"width="100%"height="100%"style="border: none;"></iframe>
                         
-                    {% else %}
-                        <div class="p-5 text-center text-muted">
-                            <i class="bi bi-exclamation-triangle display-4"></i>
-                            <p class="mt-3">Bu dosya formatı desteklenmiyor.</p>
-                        </div>
-                    {% endif %}
-
-                </div>
-                <div class="card-footer bg-white p-3">
+                    </div>
+                {% else %}
+                    <div class="p-5 text-center text-muted">
+                        <i class="bi bi-exclamation-triangle display-4"></i>
+                        <p class="mt-3">Bu dosya formatı desteklenmiyor veya dosya bulunamadı.</p>
+                        <small>Tür: {{ material.material_type }}</small>
+                    </div>
+                {% endif %}
+            </div>
+               <div class="card-footer bg-white p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <span class="badge {% if material.type == 'Video' %}bg-primary{% else %}bg-danger{% endif %} me-2">
-                                {{ material.type }}
-                            </span>
-                            <small class="text-muted"><i class="bi bi-clock"></i> {{ material.date }}</small>
+                            <span class="badge {% if material.material_type == 'video' %}bg-primary{% else %}bg-danger{% endif %} me-2">
+                                {{ material.get_material_type_display }} </span>
+                            <small class="text-muted"><i class="bi bi-clock"></i> {{ material.created_at|date:"d F Y" }}</small>
                         </div>
                         <div>
-                            {% if material.type == 'PDF' %}
-                            <a href="{{ material.source }}" download class="btn btn-sm btn-outline-dark"><i class="bi bi-download"></i> İndir</a>
+                            {% if material.material_type == 'pdf' and material.file %}
+                                <a href="{{ material.file.url }}" download class="btn btn-sm btn-outline-dark">
+                                    <i class="bi bi-download"></i> İndir
+                                </a>
                             {% endif %}
-                            <button class="btn btn-sm btn-outline-danger"><i class="bi bi-heart"></i> Favorilere Ekle</button>
                         </div>
                     </div>
                 </div>
@@ -63,36 +70,58 @@
             <div class="card card-custom border-1 shadow-sm">
                 <div class="card-body">
                     <h5 class="fw-bold">Ders Açıklaması</h5>
-                    <p class="text-muted">{{ material.description }}</p>
+                    <p class="text-muted">
+                        {% if material.description %}
+                            {{ material.description|linebreaks }}
+                        {% else %}
+                            Bu materyal için henüz bir açıklama girilmemiş.
+                        {% endif %}
+                    </p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4">
-            <div class="card card-custom border-1 shadow-sm">
-                <div class="card-header bg-white border-0 py-3">
-                    <h6 class="fw-bold mb-0">Bu Dersin Diğer Materyalleri</h6>
-                </div>
-                <div class="list-group list-group-flush">
-                    <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
-                        <div>
-                            {% if material.type == 'Video' %}
-                                <i class="bi bi-play-circle me-2"></i>
-                            {% else %}
-                                <i class="bi bi-file-pdf me-2"></i>
-                            {% endif %}
-                            {{ material.title }}
-                        </div>
-                        <small>Şu an</small>
-                    </a>
-                    
-                    <a href="{% url 'material_list' %}" class="list-group-item list-group-item-action">
-                        <div>
-                            <i class="bi bi-arrow-left me-2"></i> Diğer İçeriklere Dön
-                        </div>
-                    </a>
-                </div>
-            </div>
+    <div class="card card-custom border-1 shadow-sm">
+        <div class="card-header bg-white border-0 py-3">
+            <h6 class="fw-bold mb-0">Bu Dersin Diğer Materyalleri</h6>
         </div>
+        <div class="list-group list-group-flush" style="max-height: 500px; overflow-y: auto;">
+            
+            <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center active">
+                <div class="text-truncate" style="max-width: 80%;">
+                    {% if material.material_type == 'video' %}
+                        <i class="bi bi-play-circle me-2"></i>
+                    {% else %}
+                        <i class="bi bi-file-earmark-pdf me-2"></i>
+                    {% endif %}
+                    {{ material.title }}
+                </div>
+                <small class="badge bg-light text-primary">Şu an</small>
+            </div>
+
+            {% for other in other_materials %}
+            <a href="{% url 'material_detail' other.id %}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                <div class="text-truncate" style="max-width: 90%;">
+                    {% if other.material_type == 'video' %}
+                        <i class="bi bi-play-circle-fill me-2 text-primary"></i>
+                    {% else %}
+                        <i class="bi bi-file-earmark-pdf-fill me-2 text-danger"></i>
+                    {% endif %}
+                    {{ other.title }}
+                </div>
+                <small class="text-muted" style="font-size: 0.7rem;">
+                    {% if other.material_type == 'video' %}VİDEO{% else %}PDF{% endif %}
+                </small>
+            </a>
+            {% empty %}
+            <div class="p-3 text-center text-muted italic">
+                <small>Bu derse ait başka materyal bulunamadı.</small>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
     </div>
 </div>
 {% endblock %}

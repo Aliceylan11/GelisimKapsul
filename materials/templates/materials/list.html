@@ -3,23 +3,31 @@
 {% block content %}
 <nav aria-label="breadcrumb" class="mb-4">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{% url 'dashboard/home' %}" class="text-decoration-none text-secondary">Ana Sayfa</a></li>
+        <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-secondary">Ana Sayfa</a></li>
         <li class="breadcrumb-item"><a href="{% url 'courses/list' %}" class="text-decoration-none text-secondary">Dersler</a></li>
-        <li class="breadcrumb-item active fw-bold" style="color: #1A374D;" aria-current="page">{{ course_name }}</li>
+        
+        <li class="breadcrumb-item active fw-bold" style="color: #1A374D;" aria-current="page">
+            {{ selected_course.title|default:course_name }}
+        </li>
     </ol>
 </nav>
 
 <div class="card card-custom mb-5 border-0 shadow-sm" style="background: linear-gradient(to right, #3c607cff, #406882); color: white;">
     <div class="card-body p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
         <div>
-            <h2 class="fw-bold mb-1 "><i class="bi bi-collection-play"></i> {{ course_name }}</h2>
+            <h2 class="fw-bold mb-1 ">
+                <i class="bi bi-collection-play"></i> {{ selected_course.title|default:course_name }}
+            </h2>
         </div>
         <p class="mb-0 opacity-75">Ders materyallerine, notlara ve videolara buradan erişebilirsiniz.</p>
+        
         <div>
-            {% if user.user_type == 'instructor' %}   
-                <a href="{% url 'upload_material' %}" class="btn btn-light text-dark fw-bold px-4 py-2 shadow-sm">
-                    <i class="bi bi-cloud-upload-fill text-warning"></i> Yeni Materyal Ekle
-                </a>
+            {% if user.user_type == 'instructor' or user.is_superuser %}
+                {% if course %}
+                    <a href="{% url 'upload_material' course.id %}" class="btn btn-light text-dark fw-bold px-4 py-2 shadow-sm">
+                        <i class="bi bi-cloud-upload-fill text-warning"></i> Yeni Materyal Ekle
+                    </a>
+                {% endif %}
             {% endif %}
         </div>
     </div>
@@ -58,22 +66,39 @@
 
             <div class="card-footer bg-white border-1 pb-4 px-4">
                 <div class="d-grid gap-2">
-                    
-                    <a href="{% if material.material_type == 'pdf' %}{{ material.file.url }}{% else %}{{ material.video_url }}{% endif %}" 
-                       target="_blank" 
-                       class="btn btn-outline-success btn-sm fw-bold">
-                        <i class="bi bi-eye"></i> Görüntüle
-                    </a>
+                    <a href="{% url 'material_detail' material.id %}" class="btn btn-outline-success btn-sm fw-bold"><i class="bi bi-eye"></i> Görüntüle</a>
+
                     {% if user.user_type == 'instructor' or user.is_superuser %}
-                        <form action="{% url 'delete_material' material.pk %}" method="POST" class="d-grid">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-danger btn-sm w-100" onclick="return confirm('Bu materyali gerçekten silmek istiyor musunuz?');">
-                              <i class="bi bi-trash3"></i> Sil 
-                            </button>
-                     </form>
+                        <button type="button" class="btn btn-outline-danger fw-bold" data-bs-toggle="modal" data-bs-target="#deleteModal{{ material.id }}">
+                        <i class="bi bi-trash3-fill"></i> Sil</button>
                     {% endif %}
                  </div>
             </div>
+            <div class="modal fade" id="deleteModal{{ material.id }}" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title"><i class="bi bi-exclamation-triangle-fill me-2"></i>Silme Onayı</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                    </div>
+                    <div class="modal-body text-center p-4">
+                        <p class="fs-5 text-dark">
+                            <strong>{{ material.title }}</strong><br>
+                            Bu içeriği silmek istediğinize emin misiniz?
+                        </p>
+                        <p class="text-muted small mb-0">Bu işlem geri alınamaz!</p>
+                    </div>
+                    <div class="modal-footer justify-content-center border-0 pb-4">
+                        <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Vazgeç</button>
+                        
+                        <form action="{% url 'delete_material' material.id %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger px-4 fw-bold">Evet, Sil</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </div>
     {% endfor %}
