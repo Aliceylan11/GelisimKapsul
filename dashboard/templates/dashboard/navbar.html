@@ -36,33 +36,12 @@
                  {% if user.is_authenticated %}
                     <li class="nav-item dropdown w-100 w-lg-auto">
                         <a class="nav-link dropdown-toggle text-white d-flex align-items-center gap-2 w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% if user.profile_image %}
-                                <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" width="32" height="32" class="rounded-circle border border-2 border-light object-fit-cover">
-                            {% else %}
-                                <div class="d-flex align-items-center justify-content-center bg-turuncu text-white rounded-circle border border-2 border-light" style="width: 32px; height: 32px; min-width: 32px; font-weight: bold;">
-                                    {{ user.username|slice:":1"|upper }}
-                                </div>
-                            {% endif %}
                             <span>{{ user.first_name|default:user.username }}</span>
                         </a>
-
                         <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 mt-2" style="min-width: 250px;">
-                            
                             <li>
                                 <div class="d-flex align-items-center px-3 py-2 border-bottom mb-2">
-                                   <div class="flex-shrink-0 me-3">
-                                     {% if user.profile_image %}
-                                        <img src="{{ user.profile_image.url }}" 
-                                          style="width: 45px; height: 45px; object-fit: cover;" 
-                                         class="rounded-circle">
-                                    {% else %}
-                                      <div class="d-flex align-items-center justify-content-center rounded-circle text-white" 
-                                     style="width: 45px; height: 45px; min-width: 45px; background-color: #fd7e14; font-size: 20px; font-weight: bold;">
-                                    
-                                     {{ user.first_name|default:user.username|slice:":1"|upper }}
-                                     </div>
-                                    {% endif %}
-                                    </div>
+                                   
                                     <div class="flex-grow-1 overflow-hidden">
                                         <h6 class="mb-0 text-truncate fw-bold text-dark">{{ user.first_name }} {{ user.last_name }}</h6>
                                         <small class="text-muted d-block text-truncate">{{ user.email }}</small>
@@ -93,13 +72,7 @@
                                 </a>
                             </li>
                             
-                            {% if user.user_type == 'instructor' %}
-                            <li>
-                                <a class="dropdown-item py-2 d-flex align-items-center" href="#">
-                                    <span class="me-2">📊</span> Eğitmen Paneli
-                                </a>
-                            </li>
-                            {% endif %}
+                          
 
                             <li><hr class="dropdown-divider my-2"></li>
 
