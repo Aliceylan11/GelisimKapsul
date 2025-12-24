@@ -43,9 +43,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-=%cpqilbucbbbnvlyg(rov9i55q(im8zk(z0c)59j-616$icwh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -169,4 +169,4 @@ EMAIL_HOST_USER = 'aliceylan024@gmail.com'
 # Google'dan alacağın 16 haneli "Uygulama Şifresi"ni yazacaksın.
 EMAIL_HOST_PASSWORD = 'vpnzuhjfykasidbv'
 
-X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN' 

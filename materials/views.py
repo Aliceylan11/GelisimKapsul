@@ -100,17 +100,24 @@ def delete_material(request, pk):
 
     return redirect('material_list')
 
+
+
+
 @login_required
 def access_denied(request):
     if request.user.user_type in ['student', 'instructor', 'premium']:
         return redirect('material_list')
     return render(request, 'materials/access_denied.html')
 
+
 @login_required
 def payment(request):
     if  request.user.user_type in ['student', 'instructor', 'premium']:
         return redirect('material_list') 
     return render(request, 'materials/payment.html')
+
+
+
 
 
 @login_required
