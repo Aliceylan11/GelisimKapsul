@@ -1,40 +1,11 @@
 from django.shortcuts import render
 from django.contrib.auth import get_user_model
-
+from courses.models import Course
 User = get_user_model()
 
 def home(request):
-    context_dersler = [
-        {
-            "id": 1,
-            "baslik": "Python ve Django",
-            "aciklama": "Gelişim Kapsül projesi için backend geliştirme temelleri.",
-            "resim": "https://placehold.co/600x400/1A374D/white?text=Django", 
-            "egitmen": "Arda IRMAK"
-        },
-        {
-            "id": 2,
-            "baslik": "Web Tasarım (UI/UX)",
-            "aciklama": "Bootstrap ve CSS ile modern, responsive arayüzler.",
-            "resim": "https://placehold.co/600x400/F2994A/white?text=Tasarim",
-            "egitmen": "Edanur BOZLAR"
-        },
-        {
-            "id": 3,
-            "baslik": "Veri Tabanı Yönetimi",
-            "aciklama": "SQLite veritabanı modellemesi ve sorgular.",
-            "resim": "https://placehold.co/600x400/406882/white?text=SQL",
-            "egitmen": "Hasan Hüseyin KESKİN"
-        },
-        {
-            "id": 4,
-            "baslik": "Mobil Programlama",
-            "aciklama": "Mobil uyumlu yapılar ve uygulama geliştirme.",
-            "resim": "https://placehold.co/600x400/2D3436/white?text=Mobil",
-            "egitmen": "Ali CEYLAN"
-        },
-    ]
-
+   
+    courses = Course.objects.all()[:4]
     ogrenci_sayisi = User.objects.count()
     egitmen_sayisi = User.objects.filter(is_staff=True).count()
 
@@ -42,11 +13,11 @@ def home(request):
         egitmen_sayisi = 4
 
     context = {
-        "dersler": context_dersler,
+        "courses": courses,
         "stats": {
             "ogrenci": ogrenci_sayisi,
             "egitmen": egitmen_sayisi,
-            "ders": len(context_dersler),
+            "ders": Course.objects.count(),
             "memnuniyet": 98
         }
     }
