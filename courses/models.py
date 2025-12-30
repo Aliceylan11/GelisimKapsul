@@ -1,6 +1,7 @@
 from django.db import models
 
 class Course(models.Model):
+    #ders kategorileri bir choice field olarak tanımlandı
     CATEGORY_CHOICES = [
         ('Yazılım Mühendisliği', 'Yazılım Mühendisliği'),
         ('Bilgisayar Programlama', 'Bilgisayar Programlama'),
@@ -26,6 +27,15 @@ class Course(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="Aktif mi? (Yakında değilse aktif)")
     
     created_at = models.DateTimeField(auto_now_add=True)
+
+    # Eğitmen isimlerinden baş harfleri alma metodu yaptım
+    def get_initials(self):
+        if not self.instructor_name:
+            return ""
+        parcala = self.instructor_name.split()
+        if len(parcala)==1:
+            return parcala[0][:2].upper()
+        return f"{parcala[0][0]}{parcala[-1][0]}".upper()
 
     def __str__(self):
         return self.title
