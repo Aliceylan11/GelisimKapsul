@@ -24,11 +24,12 @@
              {% if material.material_type == 'video' %}
                     <div class="ratio ratio-16x9 rounded-top overflow-hidden bg-black">
                             {% if material.video_url %}
-                                <iframe src="{{ material.get_embed_url }}" 
-                                        title="{{ material.title }}" 
-                                        frameborder="0" 
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                        allowfullscreen>
+                                 <iframe src="{{ material.get_embed_url }}" 
+                                    title="{{ material.title }}" 
+                                    frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    referrerpolicy="strict-origin-when-cross-origin"
+                                    allowfullscreen>
                                 </iframe>
                             {% elif material.file %}
                                 <video controls class="w-100 h-100">

@@ -16,7 +16,7 @@ def list(request):
     # 2. Arama Mantığı (Title)
     search_query = request.GET.get('search')
     if search_query:
-        all_courses = all_courses.filter(Q(title__icontains=search_query) | Q(instructor_name__icontains=search_query)  ) # Kategori ismine göre de arama eklendi
+        all_courses = all_courses.filter(Q(title__icontains=search_query) | Q(instructor_name__icontains=search_query) | Q(category__icontains=search_query)) # Kategori ismine göre de arama eklendi
         
     # 3. Minimum Puan Filtreleme
     min_rating = request.GET.get('min_rating')
@@ -34,7 +34,7 @@ def list(request):
         all_courses = all_courses.order_by('-created_at') # Varsayılan sıralama
 
     # Sidebar için Kategorileri ve Sayılarını çekme
-    categories = Course.objects.values('category').annotate(count=Count('id')).order_by('category') # Her kategori için kurs sayısını alır.
+    categories = Course.objects.filter(is_active=True).values('category').annotate(count=Count('id')).order_by('category') # Her kategori için kurs sayısını alır.
     # Derslerin Toplam Sayısı
     total_count = Course.objects.filter(is_active=True).count()
     # Context Hazırlama

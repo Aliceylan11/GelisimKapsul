@@ -28,7 +28,6 @@ class CustomUser(AbstractUser):
     email = models.EmailField(unique=True, verbose_name="E-posta Adresi")
 
     def save(self, *args, **kwargs):
-        
         if self.email:
             
             email_domain = self.email.split('@')[-1]

@@ -24,9 +24,9 @@ load_dotenv() # .env dosyasını yükler
 #PAYTR_MERCHANT_SALT = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
 #PAYTR_TEST_MODE = 1  # Test modunu etkinleştir (1: etkin, 0: devre dışı)
 
-PAYTR_MERCHANT_ID='650955'
-PAYTR_MERCHANT_KEY='M8uLqiuL4wJT5ZWX'
-PAYTR_MERCHANT_SALT='orRSMWop8SD5wQb1'
+PAYTR_MERCHANT_ID='00000'
+PAYTR_MERCHANT_KEY='0000000'
+PAYTR_MERCHANT_SALT='00000000'
 PAYTR_TEST_MODE=1
 #DEBUG=True
 
@@ -174,6 +174,6 @@ EMAIL_HOST_USER = 'aliceylan024@gmail.com'
 # BURASI ÇOK ÖNEMLİ:
 # Buraya normal gmail şifreni YAZMA!
 # Google'dan alacağın 16 haneli "Uygulama Şifresi"ni yazacaksın.
-EMAIL_HOST_PASSWORD = 'vpnzuhjfykasidbv'
+EMAIL_HOST_PASSWORD = '000000000000000'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN' 
