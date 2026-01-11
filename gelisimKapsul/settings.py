@@ -24,11 +24,11 @@ load_dotenv() # .env dosyasını yükler
 #PAYTR_MERCHANT_SALT = '0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p'
 #PAYTR_TEST_MODE = 1  # Test modunu etkinleştir (1: etkin, 0: devre dışı)
 
-PAYTR_MERCHANT_ID='00000'
-PAYTR_MERCHANT_KEY='0000000'
-PAYTR_MERCHANT_SALT='00000000'
+PAYTR_MERCHANT_ID='000000'
+PAYTR_MERCHANT_KEY='000000000'
+PAYTR_MERCHANT_SALT='000000000000'
 PAYTR_TEST_MODE=1
-#DEBUG=True
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +43,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = 'django-insecure-=%cpqilbucbbbnvlyg(rov9i55q(im8zk(z0c)59j-616$icwh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = False # Dubug modunu kapattık çünkü artık yayındamışız gibi çalışıyoruz ve 404 hatasını görmek yerine ana sayfaya yönlendirmek istiyoruz. bunu yaparken css ve material dosyalarının düzgün çalışması için gerekli
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -174,6 +175,6 @@ EMAIL_HOST_USER = 'aliceylan024@gmail.com'
 # BURASI ÇOK ÖNEMLİ:
 # Buraya normal gmail şifreni YAZMA!
 # Google'dan alacağın 16 haneli "Uygulama Şifresi"ni yazacaksın.
-EMAIL_HOST_PASSWORD = '000000000000000'
+EMAIL_HOST_PASSWORD = '00000000000'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN' 

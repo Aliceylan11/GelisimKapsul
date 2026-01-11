@@ -9,7 +9,7 @@ class Material(models.Model):
         ('pdf', 'PDF Document'),
         ('video', 'Video File')
     )
-    course=models.ForeignKey(Course, on_delete=models.CASCADE, related_name='materials',verbose_name='Ders')
+    course=models.ForeignKey(Course, on_delete=models.CASCADE, related_name='materials',verbose_name='Ders') # ForeignKey ilişkisi eklendi
     title=models.CharField(max_length=255,verbose_name='Başlık')
     file=models.FileField(upload_to='materials/pdfs/',blank=True,null=True,verbose_name='Dosya')
     video_url=models.URLField(blank=True,null=True,verbose_name='Video URL')
@@ -23,7 +23,7 @@ class Material(models.Model):
     def get_embed_url(self):
         if not self.video_url:
             return ""
-        # YouTube kontrolü (mevcut kodun)
+        # YouTube kontrolü  
         if "youtube.com" in self.video_url or "youtu.be" in self.video_url:
             if "v=" in self.video_url:
                 video_id = self.video_url.split("v=")[1].split("&")[0]
@@ -32,9 +32,8 @@ class Material(models.Model):
                 video_id = self.video_url.split("/")[-1]
                 return f"https://www.youtube.com/embed/{video_id}"
 
-        # VIMEO KONTROLÜ (Yeni eklenen kısım)
-        if "vimeo.com" in self.video_url:
-            # Link: https://vimeo.com/1063281516 -> ID: 1063281516
+        # VIMEO KONTROLÜ  
+        if "vimeo.com" in self.video_url: 
             video_id = self.video_url.split("/")[-1]
             return f"https://player.vimeo.com/video/{video_id}"
 

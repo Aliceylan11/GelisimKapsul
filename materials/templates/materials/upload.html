@@ -3,7 +3,6 @@
 {% block content %}
 
 <style>
-
     .upload-card { border: none; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); overflow: hidden; }
     .upload-header { background: linear-gradient(135deg, #4e54c8, #8f94fb); color: white; padding: 40px; text-align: center; }
     .option-card-label { display: block; padding: 20px; border: 2px solid #e9ecef; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; background-color: #fff; text-align: center; }
@@ -34,7 +33,7 @@
                                 <strong>Hata!</strong> Lütfen alanları kontrol edin: {{ form.errors }}
                             </div>
                         {% endif %}
-
+                            
                         <div class="form-floating mb-4">
                             <select class="form-select border-0 bg-light" id="courseSelect" name="course" style="font-weight: 500;" required>
                                 <option selected disabled value="">Ders Seçiniz...</option>

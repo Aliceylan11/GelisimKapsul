@@ -28,9 +28,13 @@
                 <a class="nav-link text-white" href="{% url 'corporate' %}">Hakkımızda</a> 
              </li>
              <li class="nav-item">
-              <a class="nav-link text-white" href="{% url 'pricing' %}">Fiyatlandırma</a>          
-             </li>
-          </ul>
+              <a class="nav-link text-white" href="{% url 'pricing' %}">Fiyatlandırma</a>   </li>
+                {% if user.is_authenticated%}       
+                <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'courses/list' %}">Derslerim</a>          
+                </li>
+                {% endif %}
+          </ul> 
 
           <ul class="navbar-nav justify-content-lg-end align-items-start align-items-lg-center gap-2">
                  {% if user.is_authenticated %}

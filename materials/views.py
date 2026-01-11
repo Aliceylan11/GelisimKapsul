@@ -17,8 +17,8 @@ def material_list(request):
     if user.user_type == 'regular' and not user.is_superuser:
         return redirect('access_denied') 
    
-    course_param = request.GET.get('course') 
-    course_obj = None 
+    course_param = request.GET.get('course') # Sorgu parametresini al
+    course_obj = None # Seçili dersi tutmak için
 
     if course_param: 
         if course_param.isdigit():
@@ -48,6 +48,7 @@ def material_list(request):
 def upload_material(request,course_id):
     if request.user.user_type != 'instructor':
         return redirect('material_list')
+    
     course = get_object_or_404(Course, id=course_id)
     courses = Course.objects.filter(id=course_id)
     if request.method == 'POST':
@@ -77,7 +78,7 @@ def material_detail(request, id):
      
     material = get_object_or_404(Material, id=id)
  
-    other_materials = Material.objects.filter(course=material.course).exclude(id=id)
+    other_materials = Material.objects.filter(course=material.course).exclude(id=id) # Diğer materyalleri filtrele seçilen materyal hariç
 
     context = {
         'material': material,
