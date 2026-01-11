@@ -1,4 +1,4 @@
-# 🚀 Gelişim Kapsül (LearnHub)
+# 🚀 Gelişim Kapsül
 
 **Gelişim Kapsül**, üniversite öğrencileri ve akademisyenler için özel olarak tasarlanmış; ders materyallerine (PDF, Video) tek bir merkezden, hızlı ve kolay erişim sağlayan modern bir eğitim platformu prototipidir.
 
