@@ -175,6 +175,6 @@ EMAIL_HOST_USER = 'aliceylan024@gmail.com'
 # BURASI ÇOK ÖNEMLİ:
 # Buraya normal gmail şifreni YAZMA!
 # Google'dan alacağın 16 haneli "Uygulama Şifresi"ni yazacaksın.
-EMAIL_HOST_PASSWORD = '00000000000'
+EMAIL_HOST_PASSWORD = '00000000'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN' 
